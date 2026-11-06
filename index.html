@@ -9,7 +9,7 @@
 <meta name="description" content="Výkonnostní UGC videa pro TikTok a Meta Ads. Skript, natáčení, 3 hooky ke každému videu a dodání do 5 dnů.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
   tailwind.config = {
@@ -25,6 +25,7 @@
         },
         fontFamily: {
           sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+          serif: ['"Instrument Serif"', 'Georgia', '"Times New Roman"', 'serif'],
           mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
         }
       }
@@ -48,6 +49,7 @@
     --marker: #F2A27C;    /* sytý zvýrazňovač */
     --camel: #BFA184;     /* kabát */
     --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     color-scheme: light;
   }
@@ -86,10 +88,14 @@
   }
   .label-sm { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
   .num { font-variant-numeric: tabular-nums; }
-  .marker {
-    background: linear-gradient(transparent 54%, var(--marker) 54%, var(--marker) 92%, transparent 92%);
-    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  /* Hero nadpis: sans + kurzívní serif, inkoust + cihla */
+  .hl-accent { color: var(--accent); }
+  .hl-rule { display: block; height: 3px; width: min(100%, 440px); border-radius: 3px; background: linear-gradient(90deg, var(--accent), rgba(196,81,46,.55) 60%, rgba(196,81,46,0)); }
+  .serif-it {
+    font-family: var(--font-serif); font-style: italic; font-weight: 400;
+    font-size: 1.12em; line-height: .9; letter-spacing: -0.01em; white-space: nowrap;
   }
+  .stat-unit { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.08em; letter-spacing: 0; }
   [hidden] { display: none !important; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
@@ -262,9 +268,11 @@
   <div class="wrap grid items-center gap-12 lg:gap-10 pt-10 pb-16 md:pt-16 md:pb-24 lg:grid-cols-[1.12fr_.88fr]">
     <div class="min-w-0">
       <h1 class="text-[38px] leading-[1.04] sm:text-[52px] lg:text-[64px] font-extrabold tracking-[-0.04em]">
-        Tvořím výkonnostní UGC videa pro TikTok &amp; Meta&nbsp;Ads, která <span class="marker">zvyšují CTR a&nbsp;prodávají.</span>
+        <span class="block">Tvořím výkonnostní UGC videa pro TikTok &amp; Meta&nbsp;Ads,</span>
+        <span class="hl-accent">která <span class="serif-it">zvyšují CTR</span> a&nbsp;prodávají.</span>
       </h1>
-      <p class="mt-6 max-w-[58ch] text-[17px] md:text-[18px] leading-relaxed text-muted">
+      <span class="hl-rule mt-5" aria-hidden="true"></span>
+      <p class="mt-5 max-w-[58ch] text-[17px] md:text-[18px] leading-relaxed text-muted">
         Vertikální videa, která ve feedu působí jako doporučení od kamarádky, ale jsou postavená jako výkonnostní reklama: hook do 3&nbsp;sekund, konkrétní problém, důkaz a jasné CTA. Ke každému videu 3 varianty hooku na testování.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
@@ -279,18 +287,27 @@
         <span>Srovnání zdarma: projdu 3 vaše aktuální reklamy a do 48 hodin pošlu 3 nové hooky, které bych natočila.</span>
       </p>
 
-      <dl class="mt-10 grid grid-cols-3 border-y border-line divide-x divide-line">
-        <div class="py-5 pr-3 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">od briefu po hotová videa</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">5&nbsp;dní</dd>
+      <dl class="mt-10 grid grid-cols-3 rounded-[22px] border border-line bg-surface divide-x divide-line shadow-[0_18px_40px_-32px_rgba(26,23,21,.35)]">
+        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
+          <div class="flex items-end gap-[3px] h-3.5" aria-hidden="true">
+            <span class="w-2 h-1.5 rounded-sm bg-ink/15"></span><span class="w-2 h-2 rounded-sm bg-ink/20"></span><span class="w-2 h-2.5 rounded-sm bg-ink/25"></span><span class="w-2 h-3 rounded-sm bg-ink/35"></span><span class="w-2 h-3.5 rounded-sm bg-accent"></span>
+          </div>
+          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">5 <span class="stat-unit">dní</span></dd>
+          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">od briefu po hotová videa</dt>
         </div>
-        <div class="py-5 px-3 sm:px-5 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">varianty hooku ke každému videu v&nbsp;ceně</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">3&nbsp;hooky</dd>
+        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
+          <div class="flex items-center gap-1 h-3.5" aria-hidden="true">
+            <span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">A</span><span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">B</span><span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">C</span>
+          </div>
+          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">3 <span class="stat-unit">hooky</span></dd>
+          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">ke každému videu v&nbsp;ceně</dt>
         </div>
-        <div class="py-5 pl-3 sm:pl-5 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">audit a 3 hooky předem, bez závazku</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">0&nbsp;Kč</dd>
+        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
+          <div class="flex items-center h-3.5" aria-hidden="true">
+            <span class="inline-flex items-center gap-1 rounded-full bg-accent-soft text-accent-ink px-1.5 h-3.5 text-[9px] font-bold leading-none"><svg viewBox="0 0 12 12" class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.5l2.2 2L9.5 3.5"/></svg>bez závazku</span>
+          </div>
+          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">0 <span class="stat-unit">Kč</span></dd>
+          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">audit a 3 hooky předem</dt>
         </div>
       </dl>
     </div>
