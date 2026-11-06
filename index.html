@@ -165,7 +165,7 @@
   .v-under b { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .v-under span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); flex: none; }
 
-  .hero-phone .vframe { border-radius: 30px; }
+  .hero-phone .vframe { border-radius: 21px; }
   .phone-bezel { padding: 8px; border-radius: 40px; background: var(--ink); box-shadow: 0 40px 80px -40px rgba(17,17,17,.55); }
   .hero-phone .v-progress i { animation: prog 14s linear infinite; }
 
@@ -291,32 +291,20 @@
       </dl>
     </div>
 
-    <!-- Hero visual: telefon + Ads Manager čipy -->
-    <div class="relative min-w-0 mx-auto w-full max-w-[420px] py-6">
-      <div class="hero-phone relative mx-auto w-[64%] max-w-[270px] min-w-[200px]">
-        <div class="phone-bezel"><div id="heroCard"></div></div>
+    <!-- Hero visual: fotka Elišky + ukázka videa + Ads Manager čip -->
+    <div class="relative min-w-0 mx-auto w-full max-w-[460px] pb-12">
+      <figure class="relative ml-auto w-[86%] max-w-full aspect-[4/5] overflow-hidden rounded-[32px] bg-line shadow-[0_40px_80px_-40px_rgba(17,17,17,.45)]">
+        <img src="assets/eliska-hrachovcova.webp" alt="Eliška Hrachovcová, UGC creatorka" width="800" height="800" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-[50%_30%]">
+        <figcaption class="absolute top-3.5 right-3.5 inline-flex items-center gap-2 rounded-full bg-surface/90 backdrop-blur px-3.5 py-2 text-[12.5px] font-bold shadow-sm">
+          <span class="rec" aria-hidden="true"></span>Eliška · UGC creatorka
+        </figcaption>
+      </figure>
+
+      <div class="hero-phone absolute left-0 bottom-0 w-[37%] max-w-[176px]">
+        <div class="phone-bezel !p-[5px] !rounded-[26px]"><div id="heroCard"></div></div>
       </div>
 
-      <div class="absolute left-0 top-[46%] w-[168px] sm:w-[188px] rounded-2xl border border-line bg-surface p-3.5 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
-        <div class="flex items-center justify-between">
-          <span class="label-sm">Hook rate</span>
-          <i data-lucide="zap" class="w-3.5 h-3.5 text-accent-ink"></i>
-        </div>
-        <div class="mt-1 flex items-end justify-between gap-2">
-          <span class="num text-[26px] font-extrabold leading-none">41 %</span>
-          <svg viewBox="0 0 64 26" class="w-16 h-[26px]" aria-hidden="true">
-            <rect x="0" y="18" width="8" height="8" rx="2" fill="#E5E7EB"/>
-            <rect x="11" y="14" width="8" height="12" rx="2" fill="#E5E7EB"/>
-            <rect x="22" y="16" width="8" height="10" rx="2" fill="#E5E7EB"/>
-            <rect x="33" y="9" width="8" height="17" rx="2" fill="#E5E7EB"/>
-            <rect x="44" y="6" width="8" height="20" rx="2" fill="#FFB89F"/>
-            <rect x="55" y="0" width="8" height="26" rx="2" fill="#FF6A3D"/>
-          </svg>
-        </div>
-        <p class="mt-1.5 text-[11px] text-muted leading-snug">3s view / zobrazení, benchmark kategorie 25 %</p>
-      </div>
-
-      <div class="absolute right-0 bottom-[4%] w-[176px] sm:w-[196px] rounded-2xl border border-line bg-surface p-3.5 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
+      <div class="absolute right-0 bottom-0 w-[172px] sm:w-[196px] rounded-2xl border border-line bg-surface p-3.5 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
         <div class="flex items-center gap-2">
           <span class="grid place-items-center w-6 h-6 rounded-full bg-accent-soft"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-accent-ink"></i></span>
           <span class="label-sm">Meta Ads · 14 dní</span>
