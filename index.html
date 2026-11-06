@@ -90,6 +90,7 @@
     background: linear-gradient(transparent 54%, var(--marker) 54%, var(--marker) 92%, transparent 92%);
     box-decoration-break: clone; -webkit-box-decoration-break: clone;
   }
+  [hidden] { display: none !important; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
   /* REC tečka */
@@ -226,7 +227,7 @@
       <span>Eliška Hrachovcová</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[14px] font-semibold text-muted" aria-label="Hlavní navigace">
-      <a href="#videa" class="hover:text-ink transition-colors">Videa</a>
+      <a href="#videa" class="hover:text-ink transition-colors">Ukázky</a>
       <a href="#proc-ugc" class="hover:text-ink transition-colors">Proč UGC</a>
       <a href="#proces" class="hover:text-ink transition-colors">Proces</a>
       <a href="#cenik" class="hover:text-ink transition-colors">Ceník</a>
@@ -241,7 +242,7 @@
   </div>
   <div id="mobileMenu" class="md:hidden border-t border-line bg-paper" hidden>
     <nav class="wrap flex flex-col py-3 text-[17px] font-semibold" aria-label="Mobilní navigace">
-      <a href="#videa" class="py-3 border-b border-line">Videa</a>
+      <a href="#videa" class="py-3 border-b border-line">Ukázky</a>
       <a href="#proc-ugc" class="py-3 border-b border-line">Proč UGC</a>
       <a href="#proces" class="py-3 border-b border-line">Proces</a>
       <a href="#cenik" class="py-3 border-b border-line">Ceník</a>
@@ -268,7 +269,7 @@
           Chci UGC srovnání zdarma <i data-lucide="arrow-right"></i>
         </a>
         <a href="#videa" class="btn btn-ghost !min-h-[54px] !px-7 !text-[16px]">
-          <i data-lucide="play-circle"></i> Prohlédnout videa
+          <i data-lucide="play-circle"></i> Prohlédnout ukázky
         </a>
       </div>
       <p class="mt-4 max-w-[58ch] text-[13px] text-muted">
@@ -277,21 +278,21 @@
 
       <dl class="mt-10 grid grid-cols-3 border-y border-line divide-x divide-line">
         <div class="py-5 pr-3 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">dodaných videí za 12 měsíců</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">140+</dd>
+          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">od briefu po hotová videa</dt>
+          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">5&nbsp;dní</dd>
         </div>
         <div class="py-5 px-3 sm:px-5 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">průměrný ROAS v&nbsp;paid kampaních</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">2,7×</dd>
+          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">varianty hooku ke každému videu v&nbsp;ceně</dt>
+          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">3&nbsp;hooky</dd>
         </div>
         <div class="py-5 pl-3 sm:pl-5 flex flex-col-reverse justify-end gap-2">
-          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">od briefu po finální soubory</dt>
-          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">5 dní</dd>
+          <dt class="text-[12px] sm:text-[13px] text-muted leading-snug">audit a 3 hooky předem, bez závazku</dt>
+          <dd class="num text-[28px] sm:text-[36px] font-extrabold tracking-tight leading-none">0&nbsp;Kč</dd>
         </div>
       </dl>
     </div>
 
-    <!-- Hero visual: fotka Elišky + ukázka videa + Ads Manager čip -->
+    <!-- Hero visual: fotka Elišky + ukázka formátu + 3 hooky -->
     <div class="relative min-w-0 mx-auto w-full max-w-[460px] pb-12">
       <figure class="relative ml-auto w-[86%] max-w-full aspect-[4/5] overflow-hidden rounded-[32px] bg-line shadow-[0_40px_80px_-40px_rgba(17,17,17,.45)]">
         <img src="assets/eliska-hrachovcova.webp" alt="Eliška Hrachovcová, UGC creatorka" width="800" height="800" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-[50%_30%]">
@@ -304,23 +305,56 @@
         <div class="phone-bezel !p-[5px] !rounded-[26px]"><div id="heroCard"></div></div>
       </div>
 
-      <div class="absolute right-0 bottom-0 w-[172px] sm:w-[196px] rounded-2xl border border-line bg-surface p-3.5 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
-        <div class="flex items-center gap-2">
-                    <span class="label-sm">Meta Ads · 14 dní</span>
-        </div>
-        <div class="mt-2.5 grid grid-cols-2 gap-2">
-          <div>
-            <p class="text-[11px] text-muted leading-none">CTR (odkaz)</p>
-            <p class="num mt-1 text-[19px] font-extrabold leading-none">3,8 %</p>
-          </div>
-          <div>
-            <p class="text-[11px] text-muted leading-none">ROAS</p>
-            <p class="num mt-1 text-[19px] font-extrabold leading-none">3,2×</p>
-          </div>
-        </div>
-        <p class="mt-2 text-[11.5px] font-bold text-accent-ink">+140 % CTR vs. studio spot</p>
+      <div class="absolute right-0 bottom-0 w-[204px] sm:w-[232px] rounded-2xl border border-line bg-surface p-4 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
+        <p class="label-sm">Ke každému videu v ceně</p>
+        <ol class="mt-3 grid gap-2 text-[12.5px] leading-snug">
+          <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 flex-none rounded-md bg-accent-soft text-accent-ink text-[11px] font-extrabold">A</span><span>„Tohle jsem s pletí dělala 3 roky špatně“</span></li>
+          <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 flex-none rounded-md bg-accent-soft text-accent-ink text-[11px] font-extrabold">B</span><span>„Moje pleť po 4 týdnech, bez filtru“</span></li>
+          <li class="flex gap-2.5"><span class="grid place-items-center w-5 h-5 flex-none rounded-md bg-accent-soft text-accent-ink text-[11px] font-extrabold">C</span><span>„Proč tohle sérum nikdo nedoporučuje?“</span></li>
+        </ol>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ───────────── JISTOTY / USP ───────────── -->
+<section id="jistoty" class="border-y border-line bg-surface">
+  <div class="wrap py-16 md:py-24">
+    <div class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end">
+      <div class="min-w-0">
+        <p class="eyebrow">Co máte jisté</p>
+        <h2 class="mt-3 text-[30px] md:text-[42px] leading-[1.1] font-extrabold">Tři věci, které máte jisté ještě před první fakturou</h2>
+      </div>
+      <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Spolupráci mám nastavenou tak, aby riziko nesla já, ne váš reklamní rozpočet. Nejdřív uvidíte, jak přemýšlím o vašem produktu, a teprve potom se rozhodnete.</p>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <article class="flex flex-col rounded-[24px] border border-line bg-paper p-6 md:p-7 min-w-0">
+        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none">5&nbsp;dní</p>
+        <h3 class="mt-5 text-[19px] font-extrabold">Od briefu po hotové video</h3>
+        <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">Skript do 24 hodin, natáčení do 3 dnů, finální soubory nejpozději 5. pracovní den. Termín dodání vám potvrdím písemně ještě před natáčením.</p>
+        <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold">Expresně do 48 hodin za příplatek</p>
+      </article>
+      <article class="flex flex-col rounded-[24px] border border-line bg-paper p-6 md:p-7 min-w-0">
+        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none">3&nbsp;hooky</p>
+        <h3 class="mt-5 text-[19px] font-extrabold">Testování v ceně každého videa</h3>
+        <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">Ke každému videu natočím tři různé úvodní 3 sekundy. Nesázíte na jednu kreativu, ale testujete tři úhly a vítěze poznáte z dat.</p>
+        <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold">Bez příplatku ve všech balíčcích</p>
+      </article>
+      <article class="flex flex-col rounded-[24px] border border-accent/40 bg-accent-soft p-6 md:p-7 min-w-0">
+        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none text-accent-ink">0&nbsp;Kč</p>
+        <h3 class="mt-5 text-[19px] font-extrabold">Audit a 3 hooky předem</h3>
+        <p class="mt-2 text-[15px] text-ink/75 leading-relaxed flex-1">Projdu vaše současné reklamy a do 48 hodin pošlu 3 hooky se skriptem na první 3 sekundy. Ještě než cokoli objednáte, a bez závazku.</p>
+        <a href="#kontakt" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-5 w-full">Chci audit zdarma <i data-lucide="arrow-right"></i></a>
+      </article>
+    </div>
+
+    <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4 text-[14px] font-semibold">
+      <li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[1px] text-accent-ink"></i>Zálohu platíte až po schválení skriptu</li>
+      <li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[1px] text-accent-ink"></i>Jedno kolo úprav je v ceně</li>
+      <li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[1px] text-accent-ink"></i>Práva k užití písemně u každého balíčku</li>
+      <li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[1px] text-accent-ink"></i>Hooky z auditu můžete použít i bez objednávky</li>
+    </ul>
   </div>
 </section>
 
@@ -360,30 +394,62 @@
   </div>
 </section>
 
-<!-- ───────────── VIDEO PORTFOLIO ───────────── -->
+<!-- ───────────── UKÁZKY / FORMÁTY ───────────── -->
 <section id="videa" class="py-20 md:py-28 border-t border-line">
   <div class="wrap">
-    <div class="flex flex-col gap-8">
-      <div class="min-w-0 max-w-[640px]">
-        <p class="eyebrow">Portfolio</p>
-        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Videa, která se zaplatí sama</h2>
-        <p class="mt-4 text-[17px] text-muted leading-relaxed">Klikněte na video a uvidíte rozpis skriptu po sekundách a čísla z kampaně.</p>
+    <div class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end">
+      <div class="min-w-0">
+        <p class="eyebrow">Ukázky</p>
+        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Čtyři formáty, na kterých stavím každé video</h2>
       </div>
-      <div class="-mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto no-scrollbar">
-        <div class="flex gap-2 w-max md:w-auto md:flex-wrap" role="tablist" aria-label="Filtr formátu videí" id="filterTabs"></div>
-      </div>
+      <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Každý formát má jiný úkol: jeden zastaví palec, druhý buduje důvěru, třetí prodává retargetingu. Klikněte na kartu a uvidíte, jak je ukázkový skript rozvržený po sekundách.</p>
     </div>
 
-    <div id="videoGrid" class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-7 md:gap-x-5 md:gap-y-10" role="tabpanel" aria-live="polite"></div>
+    <div id="videoGrid" class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-7 md:gap-x-5"></div>
 
-    <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-[22px] border border-line bg-surface p-5 md:p-6">
-      <div class="flex items-start gap-4">
-        <div>
-          <p class="font-bold">Další videa sdílím na vyžádání</p>
-          <p class="text-[14px] text-muted">Část kampaní je pod NDA. Pošlu vám ukázky z vaší kategorie.</p>
+    <!-- NDA + ukázky na vyžádání -->
+    <div id="ukazky" class="mt-14 md:mt-16 grid overflow-hidden rounded-[28px] border border-line bg-surface lg:grid-cols-[1.05fr_.95fr]">
+      <div class="p-6 md:p-10 min-w-0">
+        <p class="eyebrow">Hotová videa na vyžádání</p>
+        <h3 class="mt-3 text-[26px] md:text-[34px] leading-[1.12] font-extrabold tracking-[-0.03em]">Ukázky z vašeho oboru vám pošlu přímo do e-mailu</h3>
+        <p class="mt-4 max-w-[52ch] text-[16px] text-muted leading-relaxed">Část videí vzniká pod NDA. Značky nechtějí, aby konkurence viděla kreativy, které jim prodávají, a já to respektuji. Proto je veřejně nesdílím a místo náhodného mixu vám pošlu výběr, který odpovídá vašemu produktu.</p>
+        <ul class="mt-6 grid gap-3 text-[15px]">
+          <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i>Výběr podle vašeho oboru a cílové skupiny</li>
+          <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i>Odpověď do 24 hodin v pracovní dny</li>
+          <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i>Žádný newsletter ani automatické follow-upy</li>
+        </ul>
+      </div>
+      <div class="p-6 md:p-10 bg-paper border-t lg:border-t-0 lg:border-l border-line min-w-0">
+        <form id="sampleForm" class="grid gap-5" novalidate>
+          <fieldset>
+            <legend class="label">Váš obor</legend>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="radio" name="niche" value="Kosmetika a beauty" class="sr-only" id="n1" checked><span class="chip-opt">Kosmetika &amp; beauty</span></label>
+              <label><input type="radio" name="niche" value="Móda a doplňky" class="sr-only" id="n2"><span class="chip-opt">Móda &amp; doplňky</span></label>
+              <label><input type="radio" name="niche" value="Domácnost a design" class="sr-only" id="n3"><span class="chip-opt">Domácnost</span></label>
+              <label><input type="radio" name="niche" value="Jídlo a suplementy" class="sr-only" id="n4"><span class="chip-opt">Jídlo &amp; suplementy</span></label>
+              <label><input type="radio" name="niche" value="Jiný obor" class="sr-only" id="n5"><span class="chip-opt">Jiný</span></label>
+            </div>
+          </fieldset>
+          <div>
+            <label class="label" for="s-email">Kam ukázky poslat</label>
+            <input class="field" id="s-email" name="email" type="email" autocomplete="email" placeholder="jana@znacka.cz" required>
+          </div>
+          <p id="sampleError" class="hidden text-[14px] font-semibold text-accent-ink" role="alert"></p>
+          <button type="submit" class="btn btn-primary w-full !min-h-[54px] !text-[16px]">Poslat mi ukázky <i data-lucide="arrow-right"></i></button>
+          <p class="text-[12px] text-muted">E-mail použiji jen pro odeslání ukázek.</p>
+        </form>
+        <div id="sampleDone" class="hidden" aria-live="polite">
+          <h4 id="sampleTitle" class="text-[22px] font-extrabold tracking-tight"></h4>
+          <p id="sampleText" class="mt-3 text-[15px] text-muted"></p>
+          <pre id="sampleSummary" class="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-line bg-surface p-4 font-mono text-[12.5px] leading-relaxed"></pre>
+          <div id="sampleActions" class="mt-5 flex flex-col sm:flex-row gap-3">
+            <button type="button" id="copySample" class="btn btn-ink"><i data-lucide="copy"></i><span>Zkopírovat zprávu</span></button>
+            <a id="sampleMail" href="#" class="btn btn-ghost"><i data-lucide="mail"></i>Otevřít v e-mailu</a>
+          </div>
+          <button type="button" id="resetSample" class="mt-4 text-[14px] font-semibold text-muted underline underline-offset-4 hover:text-ink">Změnit obor nebo e-mail</button>
         </div>
       </div>
-      <a href="#kontakt" data-pkg="Zatím nevím, chci poradit" class="btn btn-ghost flex-none">Vyžádat ukázky z mého oboru</a>
     </div>
   </div>
 </section>
@@ -463,14 +529,14 @@
       <div class="mt-10 rounded-[22px] border border-line bg-surface p-5">
         <p class="eyebrow">Raději e-mail?</p>
         <div class="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <span id="emailText" class="select-all font-bold text-[17px] break-all">hello@eliskahrachovcova.cz</span>
+          <span id="emailText" data-email class="select-all font-bold text-[17px] break-all">hello@eliskahrachovcova.cz</span>
           <button type="button" id="copyEmail" class="inline-flex items-center gap-2 h-10 px-4 rounded-full border border-line text-[13px] font-semibold hover:border-ink transition-colors">
             <i data-lucide="copy" class="w-4 h-4"></i><span>Kopírovat</span>
           </button>
         </div>
-        <div class="mt-4 flex gap-2">
-          <a href="https://www.instagram.com/" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors" aria-label="Instagram @eliska.ugc" title="Instagram @eliska.ugc"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a>
-          <a href="https://www.tiktok.com/" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors" aria-label="TikTok @eliska.ugc" title="TikTok @eliska.ugc"><svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg></a>
+        <div class="mt-4 flex gap-2" data-socials>
+          <a data-social="instagram" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a>
+          <a data-social="tiktok" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors"><svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg></a>
         </div>
       </div>
     </div>
@@ -527,31 +593,28 @@
           <p class="text-[12px] text-muted text-center">Údaje použiji jen pro odpověď na vaši poptávku.</p>
         </form>
 
-        <div id="formDone" class="hidden">
-          <div class="flex items-center gap-3">
-            <h3 id="doneTitle" class="text-[22px] font-extrabold">Poptávka je připravená</h3>
-          </div>
+        <div id="formDone" class="hidden" aria-live="polite">
+          <h3 id="doneTitle" class="text-[22px] font-extrabold tracking-tight"></h3>
           <p id="doneText" class="mt-3 text-[15px] text-muted"></p>
           <pre id="doneSummary" class="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-line bg-paper p-4 font-mono text-[12.5px] leading-relaxed"></pre>
-          <div class="mt-5 flex flex-col sm:flex-row gap-3">
-            <button type="button" id="copySummary" class="btn btn-ink"><i data-lucide="copy"></i><span>Zkopírovat poptávku</span></button>
-            <button type="button" id="resetForm" class="btn btn-ghost">Upravit</button>
+          <div id="doneActions" class="mt-5 flex flex-col sm:flex-row gap-3">
+            <button type="button" id="copySummary" class="btn btn-ink"><i data-lucide="copy"></i><span>Zkopírovat zprávu</span></button>
+            <a id="doneMail" href="#" class="btn btn-ghost"><i data-lucide="mail"></i>Otevřít v e-mailu</a>
           </div>
+          <button type="button" id="resetForm" class="mt-4 text-[14px] font-semibold text-muted underline underline-offset-4 hover:text-ink">Upravit poptávku</button>
         </div>
       </div>
 
       <!-- Panel: kalendář (Cal.com / Calendly) -->
       <div id="panel-cal" role="tabpanel" aria-labelledby="tab-cal" class="mt-7" hidden>
         <!--
-          PRODUKCE: tento blok lze nahradit oficiálním embedem, např.
-          <div style="width:100%;height:640px;overflow:auto" id="my-cal-inline"></div> + Cal.com embed script,
-          nebo <div class="calendly-inline-widget" data-url="https://calendly.com/VASE-JMENO/15min"></div>.
-          Uvnitř Claude Artifacts se iframy třetích stran nenačtou, proto zde je nativní výběr termínu,
-          který otevře rezervaci na Cal.com s předvyplněným datem.
+          S vyplněným CONFIG.calUrl tlačítko otevře rezervaci na Cal.com s předvyplněným datem.
+          Bez něj si návštěvník vybere preferovaný termín a ten se vloží do poptávkového formuláře.
+          (Iframe embed Cal.com/Calendly lze na vlastní doméně vložit sem; v Claude Artifacts se nenačte.)
         -->
         <div class="flex items-start justify-between gap-4">
           <div>
-            <h3 class="text-[20px] font-extrabold tracking-tight">UGC srovnání · 15 min</h3>
+            <h3 class="text-[20px] font-extrabold tracking-tight">Audit a 3 hooky · 15 min</h3>
             <p class="mt-1 text-[14px] text-muted flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i>Google Meet · středoevropský čas</p>
           </div>
           <span class="text-[12px] font-bold rounded-full bg-accent-soft text-accent-ink px-3 py-1 flex-none">Zdarma</span>
@@ -560,13 +623,13 @@
         <div class="-mx-1 px-1 overflow-x-auto no-scrollbar">
           <div id="days" class="flex gap-2 w-max pb-1"></div>
         </div>
-        <p class="mt-6 label">Vyberte čas</p>
-        <div id="slots" class="grid grid-cols-3 sm:grid-cols-4 gap-2"></div>
+        <p id="slotLabel" class="mt-6 label">Vyberte čas</p>
+        <div id="slots" class="grid grid-cols-3 sm:grid-cols-5 gap-2"></div>
         <div class="mt-7 rounded-2xl border border-line bg-paper p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <p class="text-[14px]"><span class="text-muted">Vybraný termín:</span> <b id="slotSummary" class="num">vyberte čas</b></p>
-          <a id="bookBtn" href="https://cal.com/" class="btn btn-primary pointer-events-none opacity-40" aria-disabled="true">Rezervovat na Cal.com <i data-lucide="external-link"></i></a>
+          <p class="text-[14px]"><span class="text-muted">Termín:</span> <b id="slotSummary" class="num">vyberte čas</b></p>
+          <a id="bookBtn" href="#kontakt" class="btn btn-primary pointer-events-none opacity-40" aria-disabled="true">Navrhnout termín</a>
         </div>
-        <p class="mt-3 text-[12px] text-muted">Rezervace se dokončí na Cal.com, kam vám přijde potvrzení a odkaz na hovor.</p>
+        <p id="calNote" class="mt-3 text-[12px] text-muted"></p>
       </div>
     </div>
   </div>
@@ -584,7 +647,7 @@
     <div class="text-[14px]">
       <p class="eyebrow">Navigace</p>
       <ul class="mt-3 grid gap-2 font-semibold">
-        <li><a class="hover:text-accent-ink" href="#videa">Videa</a></li>
+        <li><a class="hover:text-accent-ink" href="#videa">Ukázky</a></li>
         <li><a class="hover:text-accent-ink" href="#proces">Proces</a></li>
         <li><a class="hover:text-accent-ink" href="#cenik">Ceník</a></li>
         <li><a class="hover:text-accent-ink" href="#kontakt">Kontakt</a></li>
@@ -593,10 +656,10 @@
     <div class="text-[14px]">
       <p class="eyebrow">Kontakt</p>
       <ul class="mt-3 grid gap-2 font-semibold">
-        <li class="select-all break-all">hello@eliskahrachovcova.cz</li>
-        <li class="mt-2 flex gap-2">
-          <a href="https://www.instagram.com/" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors" aria-label="Instagram @eliska.ugc" title="Instagram @eliska.ugc"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a>
-          <a href="https://www.tiktok.com/" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors" aria-label="TikTok @eliska.ugc" title="TikTok @eliska.ugc"><svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg></a>
+        <li data-email class="select-all break-all">hello@eliskahrachovcova.cz</li>
+        <li class="mt-2 flex gap-2" data-socials>
+          <a data-social="instagram" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a>
+          <a data-social="tiktok" class="grid place-items-center w-10 h-10 rounded-full border border-line bg-surface text-ink hover:bg-ink hover:text-paper hover:border-ink transition-colors"><svg viewBox="0 0 24 24" class="w-[17px] h-[17px]" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg></a>
         </li>
       </ul>
     </div>
@@ -625,9 +688,9 @@
       <h3 id="mTitle" class="mt-2 text-[24px] md:text-[28px] leading-tight font-extrabold pr-10"></h3>
       <p id="mBrand" class="mt-1 text-[14px] text-muted"></p>
       <dl id="mStats" class="mt-6 grid grid-cols-3 rounded-2xl border border-line divide-x divide-line"></dl>
-      <p class="mt-7 eyebrow">Struktura skriptu</p>
+      <p class="mt-7 eyebrow">Ukázkový skript po sekundách</p>
       <ol id="mBeats" class="mt-3 grid"></ol>
-      <a href="#kontakt" id="mCta" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-7 w-full sm:w-auto">Chci podobné video pro svou značku <i data-lucide="arrow-right"></i></a>
+      <a href="#kontakt" id="mCta" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-7 w-full sm:w-auto">Chci tento formát pro svůj e-shop <i data-lucide="arrow-right"></i></a>
     </div>
   </div>
 </dialog>
@@ -636,66 +699,75 @@
 (function () {
   document.documentElement.lang = 'cs';
 
-  /* ── Nastavení ──
-     FORM_ENDPOINT: URL pro odesílání poptávek (např. Formspree / Make / vlastní API). Prázdné = zobrazí se shrnutí ke zkopírování.
-     CAL_URL: veřejný odkaz na rezervační stránku Cal.com nebo Calendly. */
-  const FORM_ENDPOINT = '';
-  const CAL_URL = 'https://cal.com/eliska-hrachovcova/ugc-srovnani';
-  const EMAIL = 'hello@eliskahrachovcova.cz';
+  /* ── NASTAVENÍ WEBU ─────────────────────────────────────────────────────────
+     Vyplňte skutečné údaje. Prázdná hodnota znamená, že se prvek skryje nebo
+     přepne na náhradní chování, takže na webu nikdy nevznikne odkaz „do prázdna“.
 
+     email         adresa pro poptávky (zobrazuje se na webu a v e-mailovém odkazu)
+     formEndpoint  URL, kam se formuláře odešlou (Formspree, Make, Netlify Forms…).
+                   Bez ní formulář připraví hotovou zprávu ke zkopírování nebo
+                   k otevření v e-mailu.
+     calUrl        veřejná rezervační stránka Cal.com, např. https://cal.com/jmeno/15min.
+                   Bez ní si návštěvník vybere preferovaný termín a pošle ho v poptávce.
+     instagram,    uživatelské jméno bez @. Prázdné = ikona se nezobrazí.
+     tiktok
+  ─────────────────────────────────────────────────────────────────────────── */
+  const CONFIG = {
+    email: 'hello@eliskahrachovcova.cz',
+    formEndpoint: '',
+    calUrl: '',
+    instagram: '',
+    tiktok: ''
+  };
+
+  const EMAIL = CONFIG.email;
+  const $ = (id) => document.getElementById(id);
   const icons = () => window.lucide && window.lucide.createIcons();
+
+  /* ── Kontaktní údaje a sociální sítě ── */
+  document.querySelectorAll('[data-email]').forEach(el => { el.textContent = EMAIL; });
+  const SOCIAL = {
+    instagram: ['Instagram', (h) => `https://www.instagram.com/${h}/`],
+    tiktok: ['TikTok', (h) => `https://www.tiktok.com/@${h}`]
+  };
+  document.querySelectorAll('[data-social]').forEach(a => {
+    const key = a.dataset.social;
+    const handle = (CONFIG[key] || '').replace(/^@/, '').trim();
+    if (!handle) { a.remove(); return; }
+    const [name, url] = SOCIAL[key];
+    a.href = url(handle);
+    a.setAttribute('aria-label', `${name} @${handle}`);
+    a.title = `${name} @${handle}`;
+  });
+  document.querySelectorAll('[data-socials]').forEach(box => { if (!box.querySelector('[data-social]')) box.remove(); });
 
   /* ── Data ── */
   const TONES = { /* odvozeno z fotky: camel kabát, cihla, břečťan, denim, malta */
     sand:  ['#E7DACB', '#BFA184', '#FBF7F2'],
     blush: ['#EDD8D0', '#C59C8E', '#FFF8F5'],
-    sage:  ['#DDE0CD', '#98A274', '#F6F7F0'],
     stone: ['#ECE6DF', '#BFB3A6', '#FDFBF8'],
-    peach: ['#EDCBB9', '#C98A6E', '#FBF3EE'],
-    mist:  ['#DADBE0', '#8D919D', '#F7F7F9']
+    peach: ['#EDCBB9', '#C98A6E', '#FBF3EE']
   };
-  const CATS = [
-    { id: 'all', label: 'Vše' },
-    { id: 'ps', label: 'Problem-Solution' },
-    { id: 'ur', label: 'Unboxing / Review' },
-    { id: 'oh', label: 'Organic Hook' },
-    { id: 'pm', label: 'Paid Meta Ad' }
+
+  /* Ukázkové skripty jednotlivých formátů (nejde o reálné kampaně klientů). */
+  const FORMATS = [
+    { id: 'ps', format: 'Problem-Solution', product: 'Pleťové sérum', tone: 'sand', shape: 'bottle', dur: '0:24', p: 28, goal: 'CTR',
+      hook: 'Tohle jsem s pletí dělala 3 roky špatně',
+      facts: [['Délka', '20–30 s'], ['Publikum', 'Studené'], ['Úkol', 'Vyšší CTR']],
+      beats: [['0–3 s', 'Hook', 'Přiznání chyby přímo do kamery, produkt zatím mimo záběr.'], ['3–8 s', 'Problém', 'Rozšířené póry a mastná T-zóna, detail bez filtru.'], ['8–19 s', 'Důkaz', 'Ranní rutina, textura séra, pleť po čtyřech týdnech.'], ['19–24 s', 'CTA', '„Odkaz máte dole, teď je na něj sleva.“']] },
+    { id: 'ur', format: 'Unboxing / Review', product: 'Vonná svíčka', tone: 'blush', shape: 'jar', dur: '0:31', p: 18, goal: 'Důvěra',
+      hook: 'Rozbaluju objednávku, kterou jsem vybírala 2 týdny',
+      facts: [['Délka', '25–40 s'], ['Publikum', 'Studené i teplé'], ['Úkol', 'Důvěra v produkt']],
+      beats: [['0–3 s', 'Hook', 'Balík na stole, ruce otevírají krabici, ASMR zvuk.'], ['3–12 s', 'Unboxing', 'Detail obalu, vůně popsaná vlastními slovy.'], ['12–26 s', 'Review', 'Svíčka hoří tři hodiny, bez černých sazí.'], ['26–31 s', 'CTA', 'Doprava zdarma nad určitou částku, kód v popisku.']] },
+    { id: 'oh', format: 'Organic Hook', product: 'Lněná košile', tone: 'stone', shape: 'fabric', dur: '0:18', p: 40, goal: 'Dosah',
+      hook: '3 věci, které se nemačkají ani po 10 hodinách ve vlaku',
+      facts: [['Délka', '12–20 s'], ['Publikum', 'Organický feed'], ['Úkol', 'Dosah a uložení']],
+      beats: [['0–3 s', 'Hook', 'Text přes obrazovku, nádraží v pozadí, rychlý střih.'], ['3–14 s', 'Listicle', 'Tři kousky, každý s testem „zmačkej a pusť“.'], ['14–18 s', 'Loop', 'Konec navazuje na začátek, video se přehrává dokola.']] },
+    { id: 'pm', format: 'Paid Meta Ad', product: 'Elektrolyty v prášku', tone: 'peach', shape: 'can', dur: '0:22', p: 24, goal: 'CPA',
+      hook: 'Ranní energie za 19 Kč denně. Bez kafe.',
+      facts: [['Délka', '15–25 s'], ['Publikum', 'Retargeting'], ['Úkol', 'Nižší CPA']],
+      beats: [['0–3 s', 'Hook', 'Cena za den jako první věta, sklenice v ruce.'], ['3–9 s', 'Problém', 'Odpolední útlum v práci, třetí káva.'], ['9–18 s', 'Řešení', 'Příprava za 10 sekund, chuť, složení bez cukru.'], ['18–22 s', 'CTA', 'Zkušební balení se slevou, tlačítko Nakoupit.']] }
   ];
-  const VIDEOS = [
-    { id: 'v1', cat: 'ps', brand: 'NOVA SKIN', product: 'Sérum s niacinamidem', tone: 'sand', shape: 'bottle', dur: '0:24', p: 28,
-      hook: 'Tohle jsem dělala s pletí 3 roky špatně', metric: '+140 % CTR', likes: '12,4K', comments: '318', saves: '2,1K',
-      stats: [['CTR', '3,8 %'], ['Hook rate', '41 %'], ['ROAS', '3,2×']],
-      beats: [['0–3 s', 'Hook', 'Přiznání chyby přímo do kamery, produkt zatím mimo záběr.'], ['3–8 s', 'Problém', 'Rozšířené póry a mastná T-zóna, detail bez filtru.'], ['8–19 s', 'Důkaz', 'Ranní rutina, textura séra, výsledek po 4 týdnech.'], ['19–24 s', 'CTA', '„Odkaz máte dole, teď je na něj −20 %.“']] },
-    { id: 'v2', cat: 'ur', brand: 'Lumé', product: 'Sójová svíčka, edice Podzim', tone: 'blush', shape: 'jar', dur: '0:31', p: 18,
-      hook: 'Rozbaluju objednávku, kterou jsem vybírala 2 týdny', metric: '3,2× ROAS', likes: '8,9K', comments: '204', saves: '1,4K',
-      stats: [['CTR', '2,9 %'], ['Hook rate', '36 %'], ['ROAS', '3,2×']],
-      beats: [['0–3 s', 'Hook', 'Balík na stole, ruce otevírají krabici, ASMR zvuk.'], ['3–12 s', 'Unboxing', 'Detail obalu, vůně popsaná vlastními slovy.'], ['12–26 s', 'Review', 'Svíčka hoří 3 hodiny, žádné černé saze.'], ['26–31 s', 'CTA', 'Doprava zdarma nad 990 Kč, kód v popisku.']] },
-    { id: 'v3', cat: 'oh', brand: 'BALTIC LINEN', product: 'Lněná košile oversize', tone: 'stone', shape: 'fabric', dur: '0:18', p: 40,
-      hook: '3 věci, které se nemačkají ani po 10 hodinách ve vlaku', metric: '1,2 mil. views', likes: '64K', comments: '1,1K', saves: '9,8K',
-      stats: [['Views', '1,2 mil.'], ['Hook rate', '52 %'], ['Uložení', '9,8K']],
-      beats: [['0–3 s', 'Hook', 'Text na obrazovce + nádraží v pozadí, tempo střihu 0,8 s.'], ['3–14 s', 'Listicle', '3 kousky, každý s testem „zmačkej a pusť“.'], ['14–18 s', 'Loop', 'Konec navazuje na začátek, video se přehrává dokola.']] },
-    { id: 'v4', cat: 'pm', brand: 'vitaful', product: 'Elektrolyty v prášku', tone: 'peach', shape: 'can', dur: '0:22', p: 24,
-      hook: 'Ranní energie za 19 Kč denně. Bez kafe.', metric: '−38 % CPA', likes: '3,2K', comments: '96', saves: '410',
-      stats: [['CPA', '214 Kč'], ['CTR', '2,4 %'], ['ROAS', '2,6×']],
-      beats: [['0–3 s', 'Hook', 'Cena za den jako první věta, sklenice v ruce.'], ['3–9 s', 'Problém', 'Odpolední útlum v práci, třetí káva.'], ['9–18 s', 'Řešení', 'Příprava za 10 s, chuť, složení bez cukru.'], ['18–22 s', 'CTA', 'Zkušební balení se slevou, tlačítko Nakoupit.']] },
-    { id: 'v5', cat: 'ps', brand: 'KORA home', product: 'Čistič na vodní kámen', tone: 'mist', shape: 'tube', dur: '0:20', p: 32,
-      hook: 'Moje koupelna vs. jeden sprej za 2 minuty', metric: '+92 % CTR', likes: '21K', comments: '540', saves: '3,7K',
-      stats: [['CTR', '3,1 %'], ['Hook rate', '47 %'], ['ROAS', '2,9×']],
-      beats: [['0–3 s', 'Hook', 'Split screen před/po, zvuk stříkání.'], ['3–8 s', 'Problém', 'Vodní kámen na baterii, detail zblízka.'], ['8–16 s', 'Demo', 'Jeden tah hadrem v reálném čase, bez střihu.'], ['16–20 s', 'CTA', 'Sada 2+1 zdarma jen tento týden.']] },
-    { id: 'v6', cat: 'ur', brand: 'maison/ten', product: 'Podzimní kapsle 4 kusy', tone: 'sage', shape: 'box', dur: '0:38', p: 14,
-      hook: 'Haul za 2 400 Kč: co si nechám a co vracím', metric: '4,1× ROAS', likes: '15K', comments: '870', saves: '4,2K',
-      stats: [['CTR', '2,7 %'], ['Hook rate', '39 %'], ['ROAS', '4,1×']],
-      beats: [['0–3 s', 'Hook', 'Cena a slib upřímnosti, taška v ruce.'], ['3–28 s', 'Try-on', '4 kousky, střih na rytmus, velikost a výška v titulku.'], ['28–34 s', 'Verdikt', '3 si nechávám, 1 vracím a proč.'], ['34–38 s', 'CTA', 'Nová kolekce na webu, výměna zdarma.']] },
-    { id: 'v7', cat: 'oh', brand: 'Glowery', product: 'Fluidní SPF 50', tone: 'blush', shape: 'tube', dur: '0:15', p: 46,
-      hook: 'Stop. Takhle se SPF nanáší správně', metric: '+210 % uložení', likes: '38K', comments: '2,3K', saves: '12K',
-      stats: [['Views', '640K'], ['Hook rate', '49 %'], ['Uložení', '12K']],
-      beats: [['0–3 s', 'Hook', 'Gesto „stop“ do kamery, text přes celou obrazovku.'], ['3–12 s', 'Edukace', 'Pravidlo dvou prstů, nanášení po vrstvách.'], ['12–15 s', 'Otázka', '„Kolik ho dáváte vy?“ podpoří komentáře.']] },
-    { id: 'v8', cat: 'pm', brand: 'NOVA SKIN', product: 'Sérum s niacinamidem', tone: 'sand', shape: 'bottle', dur: '0:27', p: 20,
-      hook: 'Tohle sérum mi vyprodali už dvakrát', metric: '2,8× ROAS', likes: '5,6K', comments: '142', saves: '880',
-      stats: [['CPA', '189 Kč'], ['CTR', '3,3 %'], ['ROAS', '2,8×']],
-      beats: [['0–3 s', 'Hook', 'Prázdná lahvička v ruce, sociální důkaz v 1. větě.'], ['3–10 s', 'Důvod', 'Co dělá jinak než ostatní séra, 2 konkrétní body.'], ['10–22 s', 'Důkaz', 'Recenze zákaznic na obrazovce + vlastní pleť.'], ['22–27 s', 'CTA', 'Skladem znovu, omezené množství.']] }
-  ];
-  const catLabel = (id) => (CATS.find(c => c.id === id) || {}).label || '';
 
   const CMP = [
     ['Cena kreativy', '40 000–120 000 Kč za spot', 'od 4 900 Kč za video'],
@@ -707,10 +779,10 @@
   ];
 
   const STEPS = [
-    { n: '01', icon: 'file-pen-line', day: 'Den 1', title: 'Brief & skript', text: '15min call nebo písemný brief. Do 24 hodin dostanete skript se 3 hooky, úhlem prodeje a CTA ke schválení.', out: 'Skript v Google Docs' },
-    { n: '02', icon: 'smartphone', day: 'Den 2–3', title: 'Natáčení', text: 'Natáčím v reálném prostředí, kde se produkt používá. 4K, přirozené světlo a čistý zvuk z klopového mikrofonu.', out: 'Raw záběry na vyžádání' },
-    { n: '03', icon: 'scissors', day: 'Den 4', title: 'Edity & hooks', text: 'Střih v tempu platformy, titulky mimo UI prvky aplikace a 3 varianty prvních 3 sekund ke každému videu.', out: '3 hook varianty / video' },
-    { n: '04', icon: 'package-check', day: 'Do 5 dnů', title: 'Dodání', text: 'MP4 1080×1920 s titulky i bez, pojmenované pro Ads Manager. V ceně je jedno kolo úprav.', out: 'Google Drive + Spark Ads kód' }
+    { n: '01', day: 'Den 1', title: 'Brief & skript', text: '15min call nebo písemný brief. Do 24 hodin dostanete skript se 3 hooky, úhlem prodeje a CTA ke schválení.', out: 'Skript v Google Docs' },
+    { n: '02', day: 'Den 2–3', title: 'Natáčení', text: 'Natáčím v reálném prostředí, kde se produkt používá. 4K, přirozené světlo a čistý zvuk z klopového mikrofonu.', out: 'Raw záběry na vyžádání' },
+    { n: '03', day: 'Den 4', title: 'Edity & hooks', text: 'Střih v tempu platformy, titulky mimo UI prvky aplikace a 3 varianty prvních 3 sekund ke každému videu.', out: '3 hook varianty / video' },
+    { n: '04', day: 'Do 5 dnů', title: 'Dodání', text: 'MP4 1080×1920 s titulky i bez, pojmenované pro Ads Manager. V ceně je jedno kolo úprav.', out: 'Google Drive + Spark Ads kód' }
   ];
 
   const PLANS = [
@@ -726,101 +798,70 @@
   ];
 
   const FAQ = [
+    ['Proč na webu nejsou celé kampaně?', 'Část videí vzniká pod NDA a značky nechtějí, aby jejich kreativy viděla konkurence. Ukázky z vašeho oboru vám ráda pošlu e-mailem, stačí vyplnit krátký formulář u ukázek.'],
+    ['Jsme menší e-shop. Má to pro nás smysl?', 'Ano. Starter Ad je navržený přesně na první test: jedno video se třemi hooky za 4 900 Kč. A ještě před tím vám zdarma pošlu audit a 3 hooky, takže uvidíte, jak přemýšlím o vašem produktu.'],
     ['Musím vám poslat produkt?', 'U fyzických produktů ano. Pošlete ho přes Zásilkovnu nebo PPL a pokud je potřeba, po natáčení ho vrátím. U aplikací a digitálních služeb stačí testovací přístup.'],
     ['Co když video nebude fungovat?', 'Proto ke každému videu dostanete 3 hooky. Netestujete jednu sázku, ale tři úhly. V ceně je jedno kolo úprav a u retaineru upravuji další skripty podle čísel z vašich kampaní.'],
     ['Čím se UGC liší od influencer marketingu?', 'Influencer prodává svůj dosah. UGC creatorka vám dodá obsah, který pustíte z vlastního účtu a cílíte sami. Platíte za kreativu, která funguje v reklamě, ne za počet followerů.'],
-    ['Můžu reklamu pustit z vašeho profilu?', 'Ano. Ve Scale Packu a retaineru dostanete Spark Ads kód pro TikTok a přístup k Partnership Ads na Meta. Reklama pak běží pod mým jménem, což obvykle zvyšuje důvěru i CTR.'],
+    ['Můžu reklamu pustit z vašeho profilu?', 'Ano. Ve Scale Packu a retaineru dostanete Spark Ads kód pro TikTok a přístup k Partnership Ads na Meta. Reklama pak běží pod mým jménem.'],
     ['Jak dlouho můžu videa používat?', 'Přesně podle balíčku: Starter 3 měsíce, Scale Pack 6 měsíců, retainer 12 měsíců. Práva lze kdykoli prodloužit o další 3 měsíce za 20 % z ceny balíčku.'],
-    ['Jak probíhá platba?', '50 % zálohu platíte po schválení skriptu, zbytek při dodání. Fakturuji na IČO se splatností 14 dní.'],
-    ['V jakých jazycích natáčíte?', 'Česky a slovensky. Pro zahraniční kampaně můžu dodat verzi s anglickým voice-overem a titulky.']
+    ['Jak probíhá platba?', '50 % zálohu platíte až po schválení skriptu, zbytek při dodání. Fakturuji na IČO se splatností 14 dní.']
   ];
 
-  /* ── Video karta ── */
+  /* ── Video karta (ukázka formátu) ── */
   function cardInner(v) {
     const t = TONES[v.tone];
     return `
       <div class="vframe" style="--tone:${t[0]};--deep:${t[1]};--prod:${t[2]};--p:${v.p}%">
         <div class="scene" aria-hidden="true"><span class="wall"></span><span class="person"></span><span class="prod" data-shape="${v.shape}"></span></div>
         <div class="v-scrim" aria-hidden="true"></div>
-        <div class="v-top"><span class="v-cat">${catLabel(v.cat)}</span><span class="v-metric"><i data-lucide="trending-up"></i>${v.metric}</span></div>
+        <div class="v-top" aria-hidden="true"><span class="v-cat">${v.format}</span><span class="v-metric"><i data-lucide="target"></i>${v.goal}</span></div>
         <p class="v-caption"><span>${v.hook}</span></p>
         <span class="v-play" aria-hidden="true"><i data-lucide="play"></i></span>
         <div class="v-rail" aria-hidden="true">
-          <span><i data-lucide="heart"></i>${v.likes}</span>
-          <span><i data-lucide="message-circle"></i>${v.comments}</span>
-          <span><i data-lucide="bookmark"></i>${v.saves}</span>
+          <span><i data-lucide="heart"></i></span>
+          <span><i data-lucide="message-circle"></i></span>
+          <span><i data-lucide="bookmark"></i></span>
           <span><i data-lucide="send"></i></span>
         </div>
         <div class="v-meta" aria-hidden="true">
-          <b>@eliska.ugc</b>
-          <p>${v.product} · #spoluprace #${v.brand.toLowerCase().replace(/[^a-z]/g, '')}</p>
-          <span class="music"><i data-lucide="music-2"></i>původní zvuk · eliska.ugc</span>
+          <b>Eliška H.</b>
+          <p>Ukázkový skript · ${v.product}</p>
+          <span class="music"><i data-lucide="music-2"></i>původní zvuk</span>
         </div>
         <div class="v-progress" aria-hidden="true"><i></i></div>
       </div>`;
   }
   function videoCard(v) {
-    return `<button type="button" class="vcard" data-id="${v.id}" aria-label="${catLabel(v.cat)}: ${v.hook}. ${v.brand}, ${v.metric}. Otevřít detail" style="--dur:${parseInt(v.dur.split(':')[1], 10)}s">
+    return `<button type="button" class="vcard" data-id="${v.id}" aria-label="${v.format}: ukázkový skript „${v.hook}“. Otevřít rozpis po sekundách" style="--dur:${parseInt(v.dur.split(':')[1], 10)}s">
       ${cardInner(v)}
-      <span class="v-under"><b>${v.brand}</b><span>${v.dur}</span></span>
+      <span class="v-under"><b>${v.format}</b><span>${v.dur}</span></span>
     </button>`;
   }
 
-  /* ── Render: hero ── */
-  document.getElementById('heroCard').innerHTML = cardInner(VIDEOS[0]);
+  $('heroCard').innerHTML = cardInner(FORMATS[0]);
+  const gridEl = $('videoGrid');
+  gridEl.innerHTML = FORMATS.map(videoCard).join('');
 
-  /* ── Render: comparison ── */
-  document.getElementById('cmpRows').innerHTML = CMP.map(([label, a, b], i) => `
+  /* ── Srovnání ── */
+  $('cmpRows').innerHTML = CMP.map(([label, a, b], i) => `
     <div class="grid grid-cols-2 md:grid-cols-[1fr_1.1fr_1.1fr] text-[14px] md:text-[15px] ${i ? 'border-t border-line' : ''}">
       <div class="col-span-2 md:col-span-1 px-5 pt-4 pb-1 md:p-6 text-[13px] md:text-[14px] font-bold text-ink md:flex md:items-center">${label}</div>
-      <div class="px-5 pb-4 pt-1 md:p-6 flex gap-2.5 text-muted"><i data-lucide="x" class="w-4 h-4 flex-none mt-[3px] text-[#9A9BA3]"></i><span>${a}</span></div>
+      <div class="px-5 pb-4 pt-1 md:p-6 flex gap-2.5 text-muted"><i data-lucide="x" class="w-4 h-4 flex-none mt-[3px] text-[#A39A92]"></i><span>${a}</span></div>
       <div class="px-5 pb-4 pt-1 md:p-6 flex gap-2.5 font-semibold bg-accent-soft/60"><i data-lucide="check" class="w-4 h-4 flex-none mt-[3px] text-accent-ink"></i><span>${b}</span></div>
     </div>`).join('');
 
-  /* ── Render: filtr + grid ── */
-  const tabsEl = document.getElementById('filterTabs');
-  const gridEl = document.getElementById('videoGrid');
-  let activeCat = 'all';
-  try { activeCat = localStorage.getItem('ugc-filter') || 'all'; } catch (e) {}
-  if (!CATS.some(c => c.id === activeCat)) activeCat = 'all';
-
-  function renderTabs() {
-    tabsEl.innerHTML = CATS.map(c => {
-      const n = c.id === 'all' ? VIDEOS.length : VIDEOS.filter(v => v.cat === c.id).length;
-      return `<button type="button" role="tab" class="tab" data-cat="${c.id}" aria-selected="${c.id === activeCat}" tabindex="${c.id === activeCat ? 0 : -1}">${c.label}<span class="count">${n}</span></button>`;
-    }).join('');
-  }
-  function renderGrid() {
-    const list = activeCat === 'all' ? VIDEOS : VIDEOS.filter(v => v.cat === activeCat);
-    gridEl.innerHTML = list.map(videoCard).join('');
-    icons();
-  }
-  tabsEl.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-cat]'); if (!b) return;
-    activeCat = b.dataset.cat;
-    try { localStorage.setItem('ugc-filter', activeCat); } catch (err) {}
-    renderTabs(); renderGrid();
-    tabsEl.querySelector(`[data-cat="${activeCat}"]`).focus();
-  });
-  tabsEl.addEventListener('keydown', (e) => {
-    if (!['ArrowRight', 'ArrowLeft'].includes(e.key)) return;
-    const i = CATS.findIndex(c => c.id === activeCat);
-    const next = CATS[(i + (e.key === 'ArrowRight' ? 1 : -1) + CATS.length) % CATS.length];
-    tabsEl.querySelector(`[data-cat="${next.id}"]`).click();
-  });
-  renderTabs(); renderGrid();
-
-  /* ── Modal ── */
-  const modal = document.getElementById('vmodal');
+  /* ── Detail formátu ── */
+  const modal = $('vmodal');
   gridEl.addEventListener('click', (e) => {
     const c = e.target.closest('.vcard'); if (!c) return;
-    const v = VIDEOS.find(x => x.id === c.dataset.id);
-    document.getElementById('mCard').innerHTML = cardInner(v);
-    document.getElementById('mCat').textContent = `${catLabel(v.cat)} · ${v.dur}`;
-    document.getElementById('mTitle').textContent = `„${v.hook}“`;
-    document.getElementById('mBrand').textContent = `${v.brand} · ${v.product}`;
-    document.getElementById('mStats').innerHTML = v.stats.map(([k, val]) => `<div class="p-3 md:p-4 min-w-0"><dt class="text-[11px] md:text-[12px] text-muted">${k}</dt><dd class="num mt-1 text-[18px] md:text-[22px] font-extrabold leading-none">${val}</dd></div>`).join('');
-    document.getElementById('mBeats').innerHTML = v.beats.map(([t, k, d], i) => `
+    const v = FORMATS.find(x => x.id === c.dataset.id);
+    $('mCard').innerHTML = cardInner(v);
+    $('mCat').textContent = `${v.format} · ${v.dur}`;
+    $('mTitle').textContent = `„${v.hook}“`;
+    $('mBrand').textContent = `Ukázkový skript · ${v.product}`;
+    $('mStats').innerHTML = v.facts.map(([k, val]) => `<div class="p-3 md:p-4 min-w-0"><dt class="text-[11px] md:text-[12px] text-muted">${k}</dt><dd class="mt-1 text-[14px] md:text-[15px] font-extrabold leading-snug">${val}</dd></div>`).join('');
+    $('mBeats').innerHTML = v.beats.map(([t, k, d], i) => `
       <li class="grid grid-cols-[64px_1fr] gap-3 py-3 ${i ? 'border-t border-line' : ''}">
         <span class="font-mono text-[12px] font-semibold text-accent-ink pt-0.5">${t}</span>
         <span class="min-w-0"><b class="block text-[14px]">${k}</b><span class="text-[14px] text-muted">${d}</span></span>
@@ -828,12 +869,12 @@
     icons();
     if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
   });
-  const closeModal = () => { if (modal.open) modal.close ? modal.close() : modal.removeAttribute('open'); };
-  document.getElementById('mClose').addEventListener('click', closeModal);
+  const closeModal = () => { if (modal.open) { modal.close ? modal.close() : modal.removeAttribute('open'); } };
+  $('mClose').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
   /* ── Proces ── */
-  document.getElementById('steps').innerHTML = STEPS.map(s => `
+  $('steps').innerHTML = STEPS.map(s => `
     <li class="relative flex flex-col rounded-[22px] border border-line bg-paper p-6 min-w-0">
       <div class="flex items-center justify-between">
         <span class="text-[13px] font-bold text-muted">Krok ${+s.n}</span>
@@ -845,7 +886,7 @@
     </li>`).join('');
 
   /* ── Ceník ── */
-  document.getElementById('pricing').innerHTML = PLANS.map(p => {
+  $('pricing').innerHTML = PLANS.map(p => {
     const dark = p.hl;
     return `
     <article class="relative flex flex-col rounded-[28px] p-6 md:p-8 min-w-0 ${dark ? 'bg-ink text-paper shadow-[0_40px_80px_-40px_rgba(17,17,17,.6)]' : 'bg-surface border border-line'}">
@@ -867,8 +908,8 @@
     </article>`;
   }).join('');
 
-  /* ── FAQ accordion ── */
-  const faqEl = document.getElementById('faqList');
+  /* ── FAQ ── */
+  const faqEl = $('faqList');
   faqEl.innerHTML = FAQ.map(([q, a], i) => `
     <div class="acc border-b border-line" ${i === 0 ? 'data-open' : ''}>
       <h3>
@@ -887,6 +928,16 @@
     b.setAttribute('aria-expanded', String(!open));
   });
 
+  /* ── Mobilní menu ── */
+  const menuBtn = $('menuBtn'), menu = $('mobileMenu');
+  const closeMenu = () => { menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); };
+  menuBtn.addEventListener('click', () => {
+    const open = menu.hidden;
+    menu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+
   /* ── Kontakt: záložky ── */
   const ctabs = [...document.querySelectorAll('.ctab')];
   function setCTab(id) {
@@ -895,84 +946,118 @@
       t.setAttribute('aria-selected', on);
       t.classList.toggle('bg-ink', on); t.classList.toggle('text-paper', on);
       t.classList.toggle('text-muted', !on);
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      $(t.getAttribute('aria-controls')).hidden = !on;
     });
   }
   ctabs.forEach(t => t.addEventListener('click', () => setCTab(t.id)));
   setCTab('tab-form');
 
   /* CTA tlačítka předvyplní balíček */
-  const pkgSel = document.getElementById('f-pkg');
+  const pkgSel = $('f-pkg');
   document.addEventListener('click', (e) => {
     const a = e.target.closest('[data-pkg]'); if (!a) return;
     const val = a.dataset.pkg;
     if ([...pkgSel.options].some(o => o.value === val)) pkgSel.value = val;
     setCTab('tab-form');
     closeModal();
-    menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false');
+    closeMenu();
   });
 
-  /* ── Formulář ── */
-  const form = document.getElementById('leadForm');
-  const err = document.getElementById('formError');
-  const done = document.getElementById('formDone');
+  /* ── Odesílání formulářů ── */
+  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  async function sendLead(payload) {
+    if (!CONFIG.formEndpoint) return 'offline';
+    try {
+      const r = await fetch(CONFIG.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      return r.ok ? 'sent' : 'error';
+    } catch (e) { return 'error'; }
+  }
+  const mailto = (subject, body) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  function showDone(prefix, status, o) {
+    const sent = status === 'sent';
+    $(prefix + 'Title').textContent = sent ? o.okTitle : (status === 'error' ? 'Odeslání se nepovedlo' : 'Zpráva je připravená');
+    $(prefix + 'Text').textContent = sent ? o.okText : `Zkopírujte ji a pošlete na ${EMAIL}, nebo ji otevřete rovnou ve svém e-mailu. Odpovím do 24 hodin v pracovní dny.`;
+    $(prefix + 'Summary').textContent = o.summary;
+    $(prefix + 'Summary').hidden = sent;
+    $(prefix + 'Actions').hidden = sent;
+    $(prefix + 'Mail').href = mailto(o.subject, o.summary);
+  }
+  async function withBusy(form, fn) {
+    const btn = form.querySelector('[type="submit"]');
+    const html = btn.innerHTML;
+    btn.disabled = true; btn.textContent = 'Odesílám…';
+    try { await fn(); } finally { btn.disabled = false; btn.innerHTML = html; icons(); }
+  }
+
+  /* Hlavní poptávka */
+  const form = $('leadForm'), err = $('formError'), done = $('formDone');
   let summary = '';
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form));
     const missing = [];
     if (!d.name.trim()) missing.push('jméno');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) missing.push('platný e-mail');
+    if (!isEmail(d.email)) missing.push('platný e-mail');
     if (!d.brand.trim()) missing.push('web nebo e-shop');
     if (missing.length) {
       err.textContent = 'Doplňte prosím: ' + missing.join(', ') + '.';
       err.classList.remove('hidden');
-      form.querySelector(':invalid, [required]:placeholder-shown')?.focus();
+      (!d.name.trim() ? $('f-name') : !isEmail(d.email) ? $('f-email') : $('f-brand')).focus();
       return;
     }
     err.classList.add('hidden');
-    summary = `Poptávka: ${d.package}\nJméno: ${d.name}\nE-mail: ${d.email}\nWeb: ${d.brand}\nRozpočet: ${d.budget || '-'}\n${d.message ? 'Zpráva: ' + d.message : ''}`.trim();
-    document.getElementById('doneSummary').textContent = summary;
-
-    if (FORM_ENDPOINT) {
-      try {
-        const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) });
-        if (!r.ok) throw new Error(r.status);
-        document.getElementById('doneTitle').textContent = 'Odesláno. Díky, ' + d.name.split(' ')[0] + '!';
-        document.getElementById('doneText').textContent = 'Ozvu se do 24 hodin v pracovní dny na ' + d.email + '.';
-      } catch (ex) {
-        document.getElementById('doneTitle').textContent = 'Odeslání se nepovedlo';
-        document.getElementById('doneText').textContent = 'Zkopírujte prosím poptávku a pošlete ji na ' + EMAIL + '.';
-      }
-    } else {
-      document.getElementById('doneTitle').textContent = 'Poptávka je připravená';
-      document.getElementById('doneText').textContent = 'Zkopírujte ji a pošlete na ' + EMAIL + '. Odpovím do 24 hodin v pracovní dny.';
-    }
-    form.classList.add('hidden'); done.classList.remove('hidden');
-    icons();
+    summary = [`Poptávka: ${d.package}`, `Jméno: ${d.name}`, `E-mail: ${d.email}`, `Web: ${d.brand}`, `Rozpočet: ${d.budget || '-'}`, d.message ? `Zpráva: ${d.message}` : ''].filter(Boolean).join('\n');
+    withBusy(form, async () => {
+      const status = await sendLead({ typ: 'poptavka', ...d });
+      showDone('done', status, { okTitle: `Odesláno. Díky, ${d.name.trim().split(' ')[0]}!`, okText: `Ozvu se do 24 hodin v pracovní dny na ${d.email}.`, subject: `Poptávka: ${d.package}`, summary });
+      form.classList.add('hidden'); done.classList.remove('hidden');
+    });
   });
-  document.getElementById('resetForm').addEventListener('click', () => { done.classList.add('hidden'); form.classList.remove('hidden'); });
+  $('resetForm').addEventListener('click', () => { done.classList.add('hidden'); form.classList.remove('hidden'); });
+
+  /* Ukázky z oboru */
+  const sForm = $('sampleForm'), sErr = $('sampleError'), sDone = $('sampleDone');
+  let sampleSummary = '';
+  sForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(sForm));
+    if (!isEmail(d.email)) { sErr.textContent = 'Zadejte prosím platný e-mail, kam ukázky poslat.'; sErr.classList.remove('hidden'); $('s-email').focus(); return; }
+    sErr.classList.add('hidden');
+    sampleSummary = `Dobrý den, pošlete mi prosím ukázky UGC videí z oboru: ${d.niche}.\nE-mail: ${d.email}`;
+    withBusy(sForm, async () => {
+      const status = await sendLead({ typ: 'ukazky', ...d });
+      showDone('sample', status, { okTitle: 'Hotovo, ukázky jsou na cestě', okText: `Výběr z oboru ${d.niche.toLowerCase()} vám pošlu na ${d.email} do 24 hodin v pracovní dny.`, subject: `Ukázky UGC videí: ${d.niche}`, summary: sampleSummary });
+      sForm.classList.add('hidden'); sDone.classList.remove('hidden');
+    });
+  });
+  $('resetSample').addEventListener('click', () => { sDone.classList.add('hidden'); sForm.classList.remove('hidden'); });
 
   function copy(text, btn, sourceEl) {
     const label = btn.querySelector('span'); const orig = label.textContent;
-    const ok = () => { label.textContent = 'Zkopírováno'; setTimeout(() => label.textContent = orig, 1800); };
-    const fallback = () => { const r = document.createRange(); r.selectNodeContents(sourceEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); label.textContent = 'Označeno, stiskněte Ctrl+C'; setTimeout(() => label.textContent = orig, 2600); };
+    const ok = () => { label.textContent = 'Zkopírováno'; setTimeout(() => { label.textContent = orig; }, 1800); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(sourceEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); label.textContent = 'Označeno, stiskněte Ctrl+C'; setTimeout(() => { label.textContent = orig; }, 2600); };
     try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
   }
-  document.getElementById('copyEmail').addEventListener('click', (e) => copy(EMAIL, e.currentTarget, document.getElementById('emailText')));
-  document.getElementById('copySummary').addEventListener('click', (e) => copy(summary, e.currentTarget, document.getElementById('doneSummary')));
+  $('copyEmail').addEventListener('click', (e) => copy(EMAIL, e.currentTarget, $('emailText')));
+  $('copySummary').addEventListener('click', (e) => copy(summary, e.currentTarget, $('doneSummary')));
+  $('copySample').addEventListener('click', (e) => copy(sampleSummary, e.currentTarget, $('sampleSummary')));
 
-  /* ── Kalendář ── */
+  /* ── Termín callu ── */
+  const hasCal = /^https?:\/\//.test(CONFIG.calUrl);
   const TIMES = ['09:30', '11:00', '13:30', '15:00', '16:30'];
   const days = [];
   const dt = new Date(); dt.setHours(0, 0, 0, 0);
   while (days.length < 7) { dt.setDate(dt.getDate() + 1); if (dt.getDay() % 6) days.push(new Date(dt)); }
   const wd = new Intl.DateTimeFormat('cs-CZ', { weekday: 'short' });
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  const taken = (di, ti) => ((di * 7 + ti * 3 + days[di].getDate()) % 5) === 0 || ((di + ti) % 4 === 1);
+  const label = (d, t) => `${wd.format(d)} ${d.getDate()}. ${d.getMonth() + 1}. v ${t}`;
   let selDay = 0, selTime = null;
-  const daysEl = document.getElementById('days'), slotsEl = document.getElementById('slots');
-  const bookBtn = document.getElementById('bookBtn'), slotSummary = document.getElementById('slotSummary');
+  const daysEl = $('days'), slotsEl = $('slots'), bookBtn = $('bookBtn');
+
+  $('slotLabel').textContent = hasCal ? 'Vyberte čas' : 'Preferovaný čas';
+  $('calNote').textContent = hasCal
+    ? 'Rezervaci dokončíte na Cal.com, kam vám přijde potvrzení a odkaz na hovor.'
+    : 'Vybraný termín se vloží do poptávky. Potvrdím ho e-mailem do 24 hodin v pracovní dny.';
 
   function renderDays() {
     daysEl.innerHTML = days.map((d, i) => `<button type="button" class="day" data-i="${i}" aria-pressed="${i === selDay}">
@@ -980,38 +1065,43 @@
       <span class="num text-[17px] font-extrabold">${d.getDate()}. ${d.getMonth() + 1}.</span></button>`).join('');
   }
   function renderSlots() {
-    slotsEl.innerHTML = TIMES.map((t, ti) => `<button type="button" class="slot" data-t="${t}" ${taken(selDay, ti) ? 'disabled aria-label="' + t + ' obsazeno"' : ''} aria-pressed="${selTime === t}">${t}</button>`).join('');
+    slotsEl.innerHTML = TIMES.map(t => `<button type="button" class="slot" data-t="${t}" aria-pressed="${selTime === t}">${t}</button>`).join('');
     const ready = selTime !== null;
     const d = days[selDay];
-    slotSummary.textContent = ready ? `${wd.format(d)} ${d.getDate()}. ${d.getMonth() + 1}. v ${selTime}` : 'vyberte čas';
-    bookBtn.href = ready ? `${CAL_URL}?date=${iso(d)}` : CAL_URL;
+    $('slotSummary').textContent = ready ? label(d, selTime) : 'vyberte čas';
+    bookBtn.href = hasCal ? `${CONFIG.calUrl}${CONFIG.calUrl.includes('?') ? '&' : '?'}date=${iso(d)}` : '#kontakt';
+    bookBtn.innerHTML = hasCal ? 'Rezervovat na Cal.com <i data-lucide="external-link"></i>' : 'Navrhnout tento termín <i data-lucide="arrow-right"></i>';
     bookBtn.classList.toggle('pointer-events-none', !ready);
     bookBtn.classList.toggle('opacity-40', !ready);
     bookBtn.setAttribute('aria-disabled', String(!ready));
+    icons();
   }
   daysEl.addEventListener('click', (e) => { const b = e.target.closest('.day'); if (!b) return; selDay = +b.dataset.i; selTime = null; renderDays(); renderSlots(); });
-  slotsEl.addEventListener('click', (e) => { const b = e.target.closest('.slot'); if (!b || b.disabled) return; selTime = b.dataset.t; renderSlots(); });
+  slotsEl.addEventListener('click', (e) => { const b = e.target.closest('.slot'); if (!b) return; selTime = b.dataset.t; renderSlots(); });
+  bookBtn.addEventListener('click', (e) => {
+    if (selTime === null) { e.preventDefault(); return; }
+    if (hasCal) return;
+    e.preventDefault();
+    const msg = $('f-msg');
+    const line = `Navrhovaný termín callu: ${label(days[selDay], selTime)} (Google Meet).`;
+    msg.value = [line, msg.value.replace(/^Navrhovaný termín callu:.*\n?/, '')].filter(Boolean).join('\n');
+    pkgSel.value = 'UGC srovnání zdarma';
+    done.classList.add('hidden'); form.classList.remove('hidden');
+    setCTab('tab-form');
+    $('f-name').focus();
+  });
   renderDays(); renderSlots();
 
-  /* ── Mobilní menu ── */
-  const menuBtn = document.getElementById('menuBtn'), menu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    const open = menu.hidden;
-    menu.hidden = !open;
-    menuBtn.setAttribute('aria-expanded', String(open));
-  });
-  menu.addEventListener('click', (e) => { if (e.target.closest('a')) { menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); } });
-
   /* ── Mobilní sticky CTA ── */
-  const mcta = document.getElementById('mcta');
-  const contact = document.getElementById('kontakt');
+  const mcta = $('mcta');
+  const contact = $('kontakt');
   function onScroll() {
     const show = window.scrollY > 640 && contact.getBoundingClientRect().top > window.innerHeight * 0.9;
     mcta.classList.toggle('show', show);
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  $('year').textContent = new Date().getFullYear();
   icons();
 })();
 </script>
