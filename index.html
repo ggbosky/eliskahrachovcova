@@ -101,12 +101,6 @@
   .btn-ink { background: var(--ink); color: var(--paper); }
   .btn-ink:hover { transform: translateY(-1px); background: #2a2a2a; }
 
-  /* Logo marquee */
-  .marquee { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
-
   /* ───── Vertikální video karta 9:16 ───── */
   .vcard { display: flex; flex-direction: column; gap: 10px; text-align: left; min-width: 0; width: 100%; }
   .vframe {
@@ -215,9 +209,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-    .marquee-track { flex-wrap: wrap; width: 100%; justify-content: center; }
-    .marquee-track [aria-hidden="true"] { display: none; }
-    .marquee { mask-image: none; -webkit-mask-image: none; }
   }
 </style>
 </head>
@@ -229,7 +220,6 @@
     <a href="#top" class="flex items-center gap-2.5 font-extrabold tracking-tight text-[17px]" aria-label="Eliška Hrachovcová, na začátek stránky">
       <span class="rec" aria-hidden="true"></span>
       <span>eliška hrachovcová</span>
-      <span class="hidden sm:inline font-mono text-[11px] font-semibold text-muted border border-line rounded-full px-2 py-0.5 tracking-wider">UGC</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[14px] font-semibold text-muted" aria-label="Hlavní navigace">
       <a href="#videa" class="hover:text-ink transition-colors">Videa</a>
@@ -263,11 +253,7 @@
 <section class="relative overflow-hidden">
   <div class="wrap grid items-center gap-12 lg:gap-10 pt-10 pb-16 md:pt-16 md:pb-24 lg:grid-cols-[1.12fr_.88fr]">
     <div class="min-w-0">
-      <p class="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface pl-3 pr-4 py-1.5 text-[13px] font-semibold">
-        <span class="rec" aria-hidden="true"></span>
-        Volné termíny natáčení od <span id="nextSlot" class="num">příštího týdne</span>
-      </p>
-      <h1 class="mt-6 text-[38px] leading-[1.04] sm:text-[52px] lg:text-[64px] font-extrabold tracking-[-0.04em]">
+      <h1 class="text-[38px] leading-[1.04] sm:text-[52px] lg:text-[64px] font-extrabold tracking-[-0.04em]">
         Tvořím výkonnostní UGC videa pro TikTok &amp; Meta&nbsp;Ads, která <span class="marker">zvyšují CTR a&nbsp;prodávají.</span>
       </h1>
       <p class="mt-6 max-w-[58ch] text-[17px] md:text-[18px] leading-relaxed text-muted">
@@ -344,19 +330,6 @@
         </div>
         <p class="mt-2 font-mono text-[10.5px] font-semibold text-accent-ink">+140 % CTR vs. studio spot</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────── LOGO BAR ───────────── -->
-<section aria-label="Značky, pro které tvořím" class="border-y border-line bg-surface">
-  <div class="wrap flex flex-col md:flex-row md:items-center gap-4 md:gap-10 py-7">
-    <div class="flex-none">
-      <p class="eyebrow">Natáčím pro značky z oborů</p>
-      <p class="mt-1 text-[14px] font-semibold">Beauty <span class="text-line">/</span> Fashion <span class="text-line">/</span> E-commerce</p>
-    </div>
-    <div class="marquee relative min-w-0 flex-1 overflow-hidden">
-      <div class="marquee-track" id="logoTrack"></div>
     </div>
   </div>
 </section>
@@ -735,17 +708,6 @@
   ];
   const catLabel = (id) => (CATS.find(c => c.id === id) || {}).label || '';
 
-  const LOGOS = [
-    ['NOVA SKIN', 'Beauty', 'font-semibold tracking-[.32em] text-[15px]'],
-    ['Lumé', 'Beauty', 'italic text-[24px] [font-family:Georgia,serif]'],
-    ['maison/ten', 'Fashion', 'font-extrabold tracking-[-0.04em] text-[21px]'],
-    ['BALTIC LINEN', 'Fashion', 'font-mono font-semibold tracking-wider text-[14px]'],
-    ['vitaful', 'E-commerce', 'font-bold italic tracking-tight text-[22px]'],
-    ['Glowery', 'Beauty', 'font-extrabold text-[21px] tracking-tight'],
-    ['KORA home', 'E-commerce', 'font-medium tracking-[.18em] text-[15px] uppercase'],
-    ['zrno&co', 'E-commerce', 'font-extrabold text-[20px] [font-family:Georgia,serif]']
-  ];
-
   const CMP = [
     ['Cena kreativy', '40 000–120 000 Kč za spot', 'od 4 900 Kč za video'],
     ['Dodání', '3–6 týdnů', 'do 5 pracovních dní'],
@@ -817,11 +779,6 @@
 
   /* ── Render: hero ── */
   document.getElementById('heroCard').innerHTML = cardInner(VIDEOS[0]);
-
-  /* ── Render: logo bar ── */
-  const logoSet = (hidden) => `<div class="flex items-center gap-12 pr-12" ${hidden ? 'aria-hidden="true"' : ''}>` +
-    LOGOS.map(([n, c, cls]) => `<span class="flex flex-col items-start leading-none whitespace-nowrap"><span class="${cls} text-ink/80">${n}</span><span class="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted">${c}</span></span>`).join('') + '</div>';
-  document.getElementById('logoTrack').innerHTML = logoSet(false) + logoSet(true);
 
   /* ── Render: comparison ── */
   document.getElementById('cmpRows').innerHTML = CMP.map(([label, a, b], i) => `
@@ -1028,8 +985,6 @@
   let selDay = 0, selTime = null;
   const daysEl = document.getElementById('days'), slotsEl = document.getElementById('slots');
   const bookBtn = document.getElementById('bookBtn'), slotSummary = document.getElementById('slotSummary');
-
-  document.getElementById('nextSlot').textContent = `${wd.format(days[0])} ${days[0].getDate()}. ${days[0].getMonth() + 1}.`;
 
   function renderDays() {
     daysEl.innerHTML = days.map((d, i) => `<button type="button" class="day" data-i="${i}" aria-pressed="${i === selDay}">
