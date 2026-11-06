@@ -9,7 +9,7 @@
 <meta name="description" content="Výkonnostní UGC videa pro TikTok a Meta Ads. Skript, natáčení, 3 hooky ke každému videu a dodání do 5 dnů.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
   tailwind.config = {
@@ -25,7 +25,7 @@
         },
         fontFamily: {
           sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-          serif: ['"Instrument Serif"', 'Georgia', '"Times New Roman"', 'serif'],
+          display: ['"Inter Tight"', '"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
           mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
         }
       }
@@ -49,7 +49,7 @@
     --marker: #F2A27C;    /* sytý zvýrazňovač */
     --camel: #BFA184;     /* kabát */
     --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --font-display: "Inter Tight", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     color-scheme: light;
   }
@@ -67,7 +67,8 @@
     content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
     z-index: 60; background: var(--paper);
   }
-  h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.028em; }
+  .display { font-family: var(--font-display); letter-spacing: -0.03em; }
   p { text-wrap: pretty; }
   .wrap {
     width: 100%; max-width: 1200px; margin-inline: auto;
@@ -88,14 +89,6 @@
   }
   .label-sm { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
   .num { font-variant-numeric: tabular-nums; }
-  /* Hero nadpis: sans + kurzívní serif, inkoust + cihla */
-  .hl-accent { color: var(--accent); }
-  .hl-rule { display: block; height: 3px; width: min(100%, 440px); border-radius: 3px; background: linear-gradient(90deg, var(--accent), rgba(196,81,46,.55) 60%, rgba(196,81,46,0)); }
-  .serif-it {
-    font-family: var(--font-serif); font-style: italic; font-weight: 400;
-    font-size: 1.12em; line-height: .9; letter-spacing: -0.01em; white-space: nowrap;
-  }
-  .stat-unit { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.08em; letter-spacing: 0; }
   [hidden] { display: none !important; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
@@ -267,11 +260,9 @@
 <section class="relative overflow-hidden">
   <div class="wrap grid items-center gap-12 lg:gap-10 pt-10 pb-16 md:pt-16 md:pb-24 lg:grid-cols-[1.12fr_.88fr]">
     <div class="min-w-0">
-      <h1 class="text-[38px] leading-[1.04] sm:text-[52px] lg:text-[64px] font-extrabold tracking-[-0.04em]">
-        <span class="block">Tvořím výkonnostní UGC videa pro TikTok &amp; Meta&nbsp;Ads,</span>
-        <span class="hl-accent">která <span class="serif-it">zvyšují CTR</span> a&nbsp;prodávají.</span>
+      <h1 class="text-[38px] leading-[1.05] sm:text-[52px] lg:text-[60px] font-semibold tracking-[-0.035em]">
+        Tvořím výkonnostní UGC videa pro TikTok &amp; Meta&nbsp;Ads, <span class="text-accent">která zvyšují CTR a&nbsp;prodávají.</span>
       </h1>
-      <span class="hl-rule mt-5" aria-hidden="true"></span>
       <p class="mt-5 max-w-[58ch] text-[17px] md:text-[18px] leading-relaxed text-muted">
         Vertikální videa, která ve feedu působí jako doporučení od kamarádky, ale jsou postavená jako výkonnostní reklama: hook do 3&nbsp;sekund, konkrétní problém, důkaz a jasné CTA. Ke každému videu 3 varianty hooku na testování.
       </p>
@@ -287,27 +278,18 @@
         <span>Srovnání zdarma: projdu 3 vaše aktuální reklamy a do 48 hodin pošlu 3 nové hooky, které bych natočila.</span>
       </p>
 
-      <dl class="mt-10 grid grid-cols-3 rounded-[22px] border border-line bg-surface divide-x divide-line shadow-[0_18px_40px_-32px_rgba(26,23,21,.35)]">
-        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
-          <div class="flex items-end gap-[3px] h-3.5" aria-hidden="true">
-            <span class="w-2 h-1.5 rounded-sm bg-ink/15"></span><span class="w-2 h-2 rounded-sm bg-ink/20"></span><span class="w-2 h-2.5 rounded-sm bg-ink/25"></span><span class="w-2 h-3 rounded-sm bg-ink/35"></span><span class="w-2 h-3.5 rounded-sm bg-accent"></span>
-          </div>
-          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">5 <span class="stat-unit">dní</span></dd>
-          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">od briefu po hotová videa</dt>
+      <dl class="mt-10 pt-7 border-t border-line grid grid-cols-3">
+        <div class="min-w-0 pr-3 sm:pr-6 flex flex-col-reverse justify-end gap-1.5">
+          <dt class="text-[12.5px] sm:text-[14px] text-muted leading-snug">od briefu po hotové video</dt>
+          <dd class="display text-[22px] sm:text-[28px] font-semibold leading-none whitespace-nowrap">5 dní</dd>
         </div>
-        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
-          <div class="flex items-center gap-1 h-3.5" aria-hidden="true">
-            <span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">A</span><span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">B</span><span class="grid place-items-center w-3.5 h-3.5 rounded-[4px] bg-accent-soft text-accent-ink text-[8.5px] font-extrabold">C</span>
-          </div>
-          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">3 <span class="stat-unit">hooky</span></dd>
-          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">ke každému videu v&nbsp;ceně</dt>
+        <div class="min-w-0 px-3 sm:px-6 border-l border-line flex flex-col-reverse justify-end gap-1.5">
+          <dt class="text-[12.5px] sm:text-[14px] text-muted leading-snug">ke každému videu v&nbsp;ceně</dt>
+          <dd class="display text-[22px] sm:text-[28px] font-semibold leading-none whitespace-nowrap">3 hooky</dd>
         </div>
-        <div class="min-w-0 p-3.5 sm:p-5 flex flex-col gap-2.5">
-          <div class="flex items-center h-3.5" aria-hidden="true">
-            <span class="inline-flex items-center gap-1 rounded-full bg-accent-soft text-accent-ink px-1.5 h-3.5 text-[9px] font-bold leading-none"><svg viewBox="0 0 12 12" class="w-2 h-2" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.5l2.2 2L9.5 3.5"/></svg>bez závazku</span>
-          </div>
-          <dd class="num order-2 text-[25px] sm:text-[40px] font-extrabold tracking-[-0.04em] leading-none whitespace-nowrap">0 <span class="stat-unit">Kč</span></dd>
-          <dt class="order-3 text-[12px] sm:text-[13px] text-muted leading-snug">audit a 3 hooky předem</dt>
+        <div class="min-w-0 pl-3 sm:pl-6 border-l border-line flex flex-col-reverse justify-end gap-1.5">
+          <dt class="text-[12.5px] sm:text-[14px] text-muted leading-snug">audit a 3 hooky předem</dt>
+          <dd class="display text-[22px] sm:text-[28px] font-semibold leading-none whitespace-nowrap">Zdarma</dd>
         </div>
       </dl>
     </div>
@@ -343,27 +325,27 @@
     <div class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end">
       <div class="min-w-0">
         <p class="eyebrow">Co máte jisté</p>
-        <h2 class="mt-3 text-[30px] md:text-[42px] leading-[1.1] font-extrabold">Tři věci, které máte jisté ještě před první fakturou</h2>
+        <h2 class="mt-3 text-[30px] md:text-[42px] leading-[1.1] font-bold">Tři věci, které máte jisté ještě před první fakturou</h2>
       </div>
       <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Spolupráci mám nastavenou tak, aby riziko nesla já, ne váš reklamní rozpočet. Nejdřív uvidíte, jak přemýšlím o vašem produktu, a teprve potom se rozhodnete.</p>
     </div>
 
     <div class="mt-10 grid gap-4 md:grid-cols-3">
       <article class="flex flex-col rounded-[24px] border border-line bg-paper p-6 md:p-7 min-w-0">
-        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none">5&nbsp;dní</p>
-        <h3 class="mt-5 text-[19px] font-extrabold">Od briefu po hotové video</h3>
+        <p class="display text-[44px] md:text-[52px] font-semibold leading-none">5&nbsp;dní</p>
+        <h3 class="mt-5 text-[19px] font-bold">Od briefu po hotové video</h3>
         <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">Skript do 24 hodin, natáčení do 3 dnů, finální soubory nejpozději 5. pracovní den. Termín dodání vám potvrdím písemně ještě před natáčením.</p>
         <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold">Expresně do 48 hodin za příplatek</p>
       </article>
       <article class="flex flex-col rounded-[24px] border border-line bg-paper p-6 md:p-7 min-w-0">
-        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none">3&nbsp;hooky</p>
-        <h3 class="mt-5 text-[19px] font-extrabold">Testování v ceně každého videa</h3>
+        <p class="display text-[44px] md:text-[52px] font-semibold leading-none">3&nbsp;hooky</p>
+        <h3 class="mt-5 text-[19px] font-bold">Testování v ceně každého videa</h3>
         <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">Ke každému videu natočím tři různé úvodní 3 sekundy. Nesázíte na jednu kreativu, ale testujete tři úhly a vítěze poznáte z dat.</p>
         <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold">Bez příplatku ve všech balíčcích</p>
       </article>
       <article class="flex flex-col rounded-[24px] border border-accent/40 bg-accent-soft p-6 md:p-7 min-w-0">
-        <p class="num text-[44px] md:text-[52px] font-extrabold tracking-[-0.04em] leading-none text-accent-ink">0&nbsp;Kč</p>
-        <h3 class="mt-5 text-[19px] font-extrabold">Audit a 3 hooky předem</h3>
+        <p class="display text-[44px] md:text-[52px] font-semibold leading-none text-accent-ink">0&nbsp;Kč</p>
+        <h3 class="mt-5 text-[19px] font-bold">Audit a 3 hooky předem</h3>
         <p class="mt-2 text-[15px] text-ink/75 leading-relaxed flex-1">Projdu vaše současné reklamy a do 48 hodin pošlu 3 hooky se skriptem na první 3 sekundy. Ještě než cokoli objednáte, a bez závazku.</p>
         <a href="#kontakt" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-5 w-full">Chci audit zdarma <i data-lucide="arrow-right"></i></a>
       </article>
@@ -384,7 +366,7 @@
     <div class="grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 items-end">
       <div class="min-w-0">
         <p class="eyebrow">Proč UGC</p>
-        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Studiový spot vypadá jako reklama. Proto ho lidé přeskočí.</h2>
+        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Studiový spot vypadá jako reklama. Proto ho lidé přeskočí.</h2>
       </div>
       <p class="min-w-0 max-w-[58ch] text-[17px] text-muted leading-relaxed">
         Na TikToku a v Reels rozhodují první 3 sekundy. Výkon kampaně neurčuje rozpočet produkce, ale počet kreativ a hooků, které stihnete otestovat, než algoritmus najde vítěze.
@@ -422,7 +404,7 @@
     <div id="portfolioHead" class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end" hidden>
       <div class="min-w-0">
         <p class="eyebrow">Portfolio</p>
-        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Videa, která jsem natočila</h2>
+        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Videa, která jsem natočila</h2>
       </div>
       <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Vyberte formát a pusťte si video. Každé stojí na jasném hooku v prvních 3 sekundách a jednom konkrétním CTA.</p>
     </div>
@@ -435,7 +417,7 @@
     <div id="ukazky" class="grid overflow-hidden rounded-[28px] border border-line bg-surface lg:grid-cols-[1.05fr_.95fr]">
       <div class="p-6 md:p-10 min-w-0">
         <p id="samplesEyebrow" class="eyebrow">Ukázky</p>
-        <h2 class="mt-3 text-[28px] md:text-[38px] leading-[1.1] font-extrabold tracking-[-0.03em]">Ukázky z vašeho oboru na vyžádání</h2>
+        <h2 class="mt-3 text-[28px] md:text-[38px] leading-[1.1] font-bold tracking-[-0.03em]">Ukázky z vašeho oboru na vyžádání</h2>
         <p class="mt-3 text-[17px] font-bold">Část kampaní je pod NDA.</p>
         <p class="mt-2 max-w-[52ch] text-[16px] text-muted leading-relaxed">Značky nechtějí, aby konkurence viděla kreativy, které jim prodávají, a já to respektuji. Napište mi svůj obor a výběr relevantních videí vám pošlu přímo do e-mailu.</p>
         <ul class="mt-6 grid gap-3 text-[15px]">
@@ -485,7 +467,7 @@
     <div class="grid gap-6 lg:grid-cols-2 lg:gap-16 items-end">
       <div class="min-w-0">
         <p class="eyebrow">Jak spolupráce probíhá</p>
-        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Od briefu k hotovým videím za 5 pracovních dní</h2>
+        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Od briefu k hotovým videím za 5 pracovních dní</h2>
       </div>
       <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Víte přesně, co dostanete a kdy. Natáčet začínám až po vašem schválení skriptu, takže nečekají žádná překvapení.</p>
     </div>
@@ -507,7 +489,7 @@
   <div class="wrap">
     <div class="max-w-[720px]">
       <p class="eyebrow">Balíčky &amp; ceny</p>
-      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Balíčky s jasně vymezenými právy k užití</h2>
+      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Balíčky s jasně vymezenými právy k užití</h2>
       <p class="mt-4 text-[17px] text-muted leading-relaxed">U každého balíčku přesně víte, kde a jak dlouho můžete videa pouštět. Žádné dodatečné licenční poplatky po spuštění kampaně.</p>
     </div>
 
@@ -530,7 +512,7 @@
   <div class="wrap grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
     <div class="min-w-0">
       <p class="eyebrow">Časté otázky</p>
-      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Na co se ptají marketéři před první objednávkou</h2>
+      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Na co se ptají marketéři před první objednávkou</h2>
       <p class="mt-4 text-[17px] text-muted leading-relaxed">Nenašli jste odpověď? Napište mi, odpovídám do 24 hodin v pracovní dny.</p>
       <a href="#kontakt" class="btn btn-ghost mt-6">Položit otázku <i data-lucide="message-circle"></i></a>
     </div>
@@ -543,7 +525,7 @@
   <div class="wrap grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
     <div class="min-w-0">
       <p class="eyebrow">UGC srovnání zdarma</p>
-      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Pošlete mi odkaz na produkt. Já vám pošlu 3&nbsp;hooky zdarma.</h2>
+      <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-bold">Pošlete mi odkaz na produkt. Já vám pošlu 3&nbsp;hooky zdarma.</h2>
       <p class="mt-5 max-w-[54ch] text-[17px] text-muted leading-relaxed">Projdu vaše současné reklamy, porovnám je s tím, co ve vaší kategorii funguje, a do 48 hodin pošlu 3 konkrétní hooky se skriptem na první 3 sekundy.</p>
       <ul class="mt-8 grid gap-3 text-[15px]">
         <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i> Odpověď do 24 hodin v pracovní dny</li>
@@ -619,7 +601,7 @@
         </form>
 
         <div id="formDone" class="hidden" aria-live="polite">
-          <h3 id="doneTitle" class="text-[22px] font-extrabold tracking-tight"></h3>
+          <h3 id="doneTitle" class="text-[22px] font-bold tracking-tight"></h3>
           <p id="doneText" class="mt-3 text-[15px] text-muted"></p>
           <pre id="doneSummary" class="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-line bg-paper p-4 font-mono text-[12.5px] leading-relaxed"></pre>
           <div id="doneActions" class="mt-5 flex flex-col sm:flex-row gap-3">
@@ -639,7 +621,7 @@
         -->
         <div class="flex items-start justify-between gap-4">
           <div>
-            <h3 class="text-[20px] font-extrabold tracking-tight">Audit a 3 hooky · 15 min</h3>
+            <h3 class="text-[20px] font-bold tracking-tight">Audit a 3 hooky · 15 min</h3>
             <p class="mt-1 text-[14px] text-muted flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i>Google Meet · středoevropský čas</p>
           </div>
           <span class="text-[12px] font-bold rounded-full bg-accent-soft text-accent-ink px-3 py-1 flex-none">Zdarma</span>
@@ -710,7 +692,7 @@
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <p id="mCat" class="eyebrow pr-12"></p>
-      <h3 id="mTitle" class="mt-2 text-[24px] md:text-[28px] leading-tight font-extrabold pr-10"></h3>
+      <h3 id="mTitle" class="mt-2 text-[24px] md:text-[28px] leading-tight font-bold pr-10"></h3>
       <p id="mBrand" class="mt-1 text-[14px] text-muted"></p>
       <p id="mResult" class="mt-5 self-start rounded-full bg-accent-soft text-accent-ink px-3.5 py-1.5 text-[14px] font-bold" hidden></p>
       <p id="mNote" class="mt-5 max-w-[52ch] text-[15px] text-muted leading-relaxed"></p>
@@ -980,7 +962,7 @@
         <span class="text-[13px] font-bold text-muted">Krok ${+s.n}</span>
         <span class="text-[13px] font-bold ${s.n === '04' ? 'text-accent-ink' : 'text-muted'}">${s.day}</span>
       </div>
-      <h3 class="mt-4 text-[20px] font-extrabold">${s.title}</h3>
+      <h3 class="mt-4 text-[20px] font-bold">${s.title}</h3>
       <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">${s.text}</p>
       <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold flex items-center gap-2"><i data-lucide="corner-down-right" class="w-4 h-4 text-accent-ink"></i>${s.out}</p>
     </li>`).join('');
@@ -991,11 +973,11 @@
     return `
     <article class="relative flex flex-col rounded-[28px] p-6 md:p-8 min-w-0 ${dark ? 'bg-ink text-paper shadow-[0_40px_80px_-40px_rgba(17,17,17,.6)]' : 'bg-surface border border-line'}">
       <div class="flex items-center justify-between gap-3">
-        <h3 class="text-[20px] font-extrabold">${p.name}</h3>
+        <h3 class="text-[20px] font-bold">${p.name}</h3>
         ${dark ? '<span class="text-[12px] font-bold rounded-full bg-accent text-white px-3 py-1">Nejčastější volba</span>' : ''}
       </div>
       <p class="mt-2 lg:min-h-[42px] text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.for}</p>
-      <p class="mt-6 flex items-baseline gap-2 flex-wrap"><span class="num text-[44px] font-extrabold tracking-[-0.04em] leading-none">${p.price}</span><span class="text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.unit}</span></p>
+      <p class="mt-6 flex items-baseline gap-2 flex-wrap"><span class="display num text-[44px] font-semibold leading-none">${p.price}</span><span class="text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.unit}</span></p>
       <p class="mt-2 h-5 text-[13px] font-bold ${dark ? 'text-accent-light' : 'text-accent-ink'}">${p.note || ''}</p>
       <ul class="mt-5 grid gap-2.5 text-[15px] flex-1">
         ${p.items.map(i => `<li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[3px] ${dark ? 'text-accent-light' : 'text-accent-ink'}"></i><span>${i}</span></li>`).join('')}
