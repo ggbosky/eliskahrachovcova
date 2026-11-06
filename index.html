@@ -121,6 +121,9 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
   .scene { position: absolute; inset: 0; z-index: 0; }
+  .vframe.is-real::after { display: none; }
+  .vframe.is-real .v-meta { right: 6cqw; }
+  .vframe.is-real .v-meta b { font-size: 5.2cqw; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .scene::before { content: ""; position: absolute; inset: 0; background: radial-gradient(110% 60% at 80% 12%, rgba(255,255,255,.6), transparent 62%); }
   .scene .wall { position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: var(--deep); opacity: .35; }
   .person { position: absolute; left: 4%; bottom: -4%; width: 66%; height: 60%; }
@@ -268,8 +271,8 @@
         <a href="#kontakt" data-pkg="UGC srovnání zdarma" class="btn btn-primary !min-h-[54px] !px-7 !text-[16px]">
           Chci UGC srovnání zdarma <i data-lucide="arrow-right"></i>
         </a>
-        <a href="#videa" class="btn btn-ghost !min-h-[54px] !px-7 !text-[16px]">
-          <i data-lucide="play-circle"></i> Prohlédnout ukázky
+        <a href="#ukazky" id="heroVideosBtn" class="btn btn-ghost !min-h-[54px] !px-7 !text-[16px]">
+          <i data-lucide="mail"></i> Vyžádat ukázky videí
         </a>
       </div>
       <p class="mt-4 max-w-[58ch] text-[13px] text-muted">
@@ -394,25 +397,30 @@
   </div>
 </section>
 
-<!-- ───────────── UKÁZKY / FORMÁTY ───────────── -->
+<!-- ───────────── PORTFOLIO ─────────────
+     Obsah řídí pole VIDEOS ve skriptu. Prázdné pole = zobrazí se jen box „Ukázky na vyžádání“.
+     S prvním videem se automaticky objeví hlavička, filtr formátů a mřížka. -->
 <section id="videa" class="py-20 md:py-28 border-t border-line">
   <div class="wrap">
-    <div class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end">
+    <div id="portfolioHead" class="grid gap-6 lg:grid-cols-[.95fr_1.05fr] lg:gap-16 items-end" hidden>
       <div class="min-w-0">
-        <p class="eyebrow">Ukázky</p>
-        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Čtyři formáty, na kterých stavím každé video</h2>
+        <p class="eyebrow">Portfolio</p>
+        <h2 class="mt-3 text-[32px] md:text-[46px] leading-[1.08] font-extrabold">Videa, která jsem natočila</h2>
       </div>
-      <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Každý formát má jiný úkol: jeden zastaví palec, druhý buduje důvěru, třetí prodává retargetingu. Klikněte na kartu a uvidíte, jak je ukázkový skript rozvržený po sekundách.</p>
+      <p class="min-w-0 max-w-[56ch] text-[17px] text-muted leading-relaxed">Vyberte formát a pusťte si video. Každé stojí na jasném hooku v prvních 3 sekundách a jednom konkrétním CTA.</p>
     </div>
+    <div id="filterWrap" class="mt-8 -mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto no-scrollbar" hidden>
+      <div class="flex gap-2 w-max md:w-auto md:flex-wrap" role="tablist" aria-label="Filtr formátu videí" id="filterTabs"></div>
+    </div>
+    <div id="videoGrid" class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-7 md:gap-x-5" aria-live="polite" hidden></div>
 
-    <div id="videoGrid" class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-7 md:gap-x-5"></div>
-
-    <!-- NDA + ukázky na vyžádání -->
-    <div id="ukazky" class="mt-14 md:mt-16 grid overflow-hidden rounded-[28px] border border-line bg-surface lg:grid-cols-[1.05fr_.95fr]">
+    <!-- Ukázky na vyžádání (NDA) – zobrazuje se vždy -->
+    <div id="ukazky" class="grid overflow-hidden rounded-[28px] border border-line bg-surface lg:grid-cols-[1.05fr_.95fr]">
       <div class="p-6 md:p-10 min-w-0">
-        <p class="eyebrow">Hotová videa na vyžádání</p>
-        <h3 class="mt-3 text-[26px] md:text-[34px] leading-[1.12] font-extrabold tracking-[-0.03em]">Ukázky z vašeho oboru vám pošlu přímo do e-mailu</h3>
-        <p class="mt-4 max-w-[52ch] text-[16px] text-muted leading-relaxed">Část videí vzniká pod NDA. Značky nechtějí, aby konkurence viděla kreativy, které jim prodávají, a já to respektuji. Proto je veřejně nesdílím a místo náhodného mixu vám pošlu výběr, který odpovídá vašemu produktu.</p>
+        <p id="samplesEyebrow" class="eyebrow">Ukázky</p>
+        <h2 class="mt-3 text-[28px] md:text-[38px] leading-[1.1] font-extrabold tracking-[-0.03em]">Ukázky z vašeho oboru na vyžádání</h2>
+        <p class="mt-3 text-[17px] font-bold">Část kampaní je pod NDA.</p>
+        <p class="mt-2 max-w-[52ch] text-[16px] text-muted leading-relaxed">Značky nechtějí, aby konkurence viděla kreativy, které jim prodávají, a já to respektuji. Napište mi svůj obor a výběr relevantních videí vám pošlu přímo do e-mailu.</p>
         <ul class="mt-6 grid gap-3 text-[15px]">
           <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i>Výběr podle vašeho oboru a cílové skupiny</li>
           <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i>Odpověď do 24 hodin v pracovní dny</li>
@@ -436,7 +444,7 @@
             <input class="field" id="s-email" name="email" type="email" autocomplete="email" placeholder="jana@znacka.cz" required>
           </div>
           <p id="sampleError" class="hidden text-[14px] font-semibold text-accent-ink" role="alert"></p>
-          <button type="submit" class="btn btn-primary w-full !min-h-[54px] !text-[16px]">Poslat mi ukázky <i data-lucide="arrow-right"></i></button>
+          <button type="submit" class="btn btn-primary w-full !min-h-[54px] !text-[16px]"><i data-lucide="mail"></i> Poslat mi ukázky na e-mail</button>
           <p class="text-[12px] text-muted">E-mail použiji jen pro odeslání ukázek.</p>
         </form>
         <div id="sampleDone" class="hidden" aria-live="polite">
@@ -526,7 +534,7 @@
         <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 flex-none text-accent-ink mt-0.5"></i> Hooky můžete natočit i s někým jiným</li>
       </ul>
 
-      <div class="mt-10 rounded-[22px] border border-line bg-surface p-5">
+      <div class="mt-10 rounded-[22px] border border-line bg-surface p-5" data-email-box>
         <p class="eyebrow">Raději e-mail?</p>
         <div class="mt-2 flex flex-wrap items-center justify-between gap-3">
           <span id="emailText" data-email class="select-all font-bold text-[17px] break-all">hello@eliskahrachovcova.cz</span>
@@ -676,21 +684,20 @@
 
 <!-- Detail videa -->
 <dialog id="vmodal" class="vmodal" aria-labelledby="mTitle">
-  <div class="grid md:grid-cols-[300px_1fr]">
-    <div class="bg-paper p-5 md:p-6 flex justify-center border-b md:border-b-0 md:border-r border-line">
-      <div id="mCard" class="w-[200px] md:w-full"></div>
+  <div class="grid md:grid-cols-[320px_1fr]">
+    <div class="bg-ink p-4 md:p-5 flex justify-center">
+      <video id="mVideo" class="w-[230px] md:w-full max-w-full aspect-[9/16] rounded-[18px] bg-black object-contain" controls playsinline preload="metadata"></video>
     </div>
-    <div class="relative p-6 md:p-8 min-w-0">
-      <button type="button" id="mClose" class="absolute top-4 right-4 grid place-items-center w-10 h-10 rounded-full border border-line bg-surface hover:border-ink" aria-label="Zavřít detail">
+    <div class="relative p-6 md:p-8 min-w-0 flex flex-col">
+      <button type="button" id="mClose" class="absolute top-4 right-4 grid place-items-center w-10 h-10 rounded-full border border-line bg-surface hover:border-ink" aria-label="Zavřít video">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
       <p id="mCat" class="eyebrow pr-12"></p>
       <h3 id="mTitle" class="mt-2 text-[24px] md:text-[28px] leading-tight font-extrabold pr-10"></h3>
       <p id="mBrand" class="mt-1 text-[14px] text-muted"></p>
-      <dl id="mStats" class="mt-6 grid grid-cols-3 rounded-2xl border border-line divide-x divide-line"></dl>
-      <p class="mt-7 eyebrow">Ukázkový skript po sekundách</p>
-      <ol id="mBeats" class="mt-3 grid"></ol>
-      <a href="#kontakt" id="mCta" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-7 w-full sm:w-auto">Chci tento formát pro svůj e-shop <i data-lucide="arrow-right"></i></a>
+      <p id="mResult" class="mt-5 self-start rounded-full bg-accent-soft text-accent-ink px-3.5 py-1.5 text-[14px] font-bold" hidden></p>
+      <p id="mNote" class="mt-5 max-w-[52ch] text-[15px] text-muted leading-relaxed"></p>
+      <a href="#kontakt" data-pkg="UGC srovnání zdarma" class="btn btn-primary mt-7 w-full sm:w-auto sm:self-start">Chci podobné video pro svůj e-shop <i data-lucide="arrow-right"></i></a>
     </div>
   </div>
 </dialog>
@@ -709,8 +716,8 @@
                    k otevření v e-mailu.
      calUrl        veřejná rezervační stránka Cal.com, např. https://cal.com/jmeno/15min.
                    Bez ní si návštěvník vybere preferovaný termín a pošle ho v poptávce.
-     instagram,    uživatelské jméno bez @. Prázdné = ikona se nezobrazí.
-     tiktok
+     instagram,    celá URL profilu (https://www.instagram.com/jmeno/) nebo jen
+     tiktok        uživatelské jméno. Prázdná nebo neplatná hodnota = ikona se skryje.
   ─────────────────────────────────────────────────────────────────────────── */
   const CONFIG = {
     email: 'hello@eliskahrachovcova.cz',
@@ -724,20 +731,40 @@
   const $ = (id) => document.getElementById(id);
   const icons = () => window.lucide && window.lucide.createIcons();
 
-  /* ── Kontaktní údaje a sociální sítě ── */
-  document.querySelectorAll('[data-email]').forEach(el => { el.textContent = EMAIL; });
+  /* ── Kontaktní údaje a sociální sítě (s fallbackem) ── */
+  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || '').trim());
+  const HAS_EMAIL = isEmail(EMAIL);
+  if (HAS_EMAIL) document.querySelectorAll('[data-email]').forEach(el => { el.textContent = EMAIL; });
+  else document.querySelectorAll('[data-email], [data-email-box]').forEach(el => el.remove());
+
   const SOCIAL = {
-    instagram: ['Instagram', (h) => `https://www.instagram.com/${h}/`],
-    tiktok: ['TikTok', (h) => `https://www.tiktok.com/@${h}`]
+    instagram: { name: 'Instagram', host: 'instagram.com', fromHandle: (h) => `https://www.instagram.com/${h}/` },
+    tiktok:    { name: 'TikTok',    host: 'tiktok.com',    fromHandle: (h) => `https://www.tiktok.com/@${h}` }
   };
+  /* Vrátí platnou URL profilu, nebo '' (pak se ikona nezobrazí). */
+  function socialUrl(key, raw) {
+    const v = String(raw || '').trim();
+    if (!v) return '';
+    const net = SOCIAL[key];
+    if (/^https?:\/\//i.test(v)) {
+      try {
+        const u = new URL(v);
+        const okHost = u.hostname.replace(/^www\./, '').endsWith(net.host);
+        const hasProfile = u.pathname.replace(/\//g, '').length > 1;
+        return okHost && hasProfile ? u.href : '';
+      } catch (e) { return ''; }
+    }
+    const handle = v.replace(/^@/, '');
+    return /^[A-Za-z0-9._]{2,30}$/.test(handle) ? net.fromHandle(handle) : '';
+  }
   document.querySelectorAll('[data-social]').forEach(a => {
     const key = a.dataset.social;
-    const handle = (CONFIG[key] || '').replace(/^@/, '').trim();
-    if (!handle) { a.remove(); return; }
-    const [name, url] = SOCIAL[key];
-    a.href = url(handle);
-    a.setAttribute('aria-label', `${name} @${handle}`);
-    a.title = `${name} @${handle}`;
+    const url = socialUrl(key, CONFIG[key]);
+    if (!url) { a.remove(); return; }
+    a.href = url;
+    a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', `${SOCIAL[key].name}: profil Elišky Hrachovcové`);
+    a.title = SOCIAL[key].name;
   });
   document.querySelectorAll('[data-socials]').forEach(box => { if (!box.querySelector('[data-social]')) box.remove(); });
 
@@ -749,25 +776,30 @@
     peach: ['#EDCBB9', '#C98A6E', '#FBF3EE']
   };
 
-  /* Ukázkové skripty jednotlivých formátů (nejde o reálné kampaně klientů). */
-  const FORMATS = [
-    { id: 'ps', format: 'Problem-Solution', product: 'Pleťové sérum', tone: 'sand', shape: 'bottle', dur: '0:24', p: 28, goal: 'CTR',
-      hook: 'Tohle jsem s pletí dělala 3 roky špatně',
-      facts: [['Délka', '20–30 s'], ['Publikum', 'Studené'], ['Úkol', 'Vyšší CTR']],
-      beats: [['0–3 s', 'Hook', 'Přiznání chyby přímo do kamery, produkt zatím mimo záběr.'], ['3–8 s', 'Problém', 'Rozšířené póry a mastná T-zóna, detail bez filtru.'], ['8–19 s', 'Důkaz', 'Ranní rutina, textura séra, pleť po čtyřech týdnech.'], ['19–24 s', 'CTA', '„Odkaz máte dole, teď je na něj sleva.“']] },
-    { id: 'ur', format: 'Unboxing / Review', product: 'Vonná svíčka', tone: 'blush', shape: 'jar', dur: '0:31', p: 18, goal: 'Důvěra',
-      hook: 'Rozbaluju objednávku, kterou jsem vybírala 2 týdny',
-      facts: [['Délka', '25–40 s'], ['Publikum', 'Studené i teplé'], ['Úkol', 'Důvěra v produkt']],
-      beats: [['0–3 s', 'Hook', 'Balík na stole, ruce otevírají krabici, ASMR zvuk.'], ['3–12 s', 'Unboxing', 'Detail obalu, vůně popsaná vlastními slovy.'], ['12–26 s', 'Review', 'Svíčka hoří tři hodiny, bez černých sazí.'], ['26–31 s', 'CTA', 'Doprava zdarma nad určitou částku, kód v popisku.']] },
-    { id: 'oh', format: 'Organic Hook', product: 'Lněná košile', tone: 'stone', shape: 'fabric', dur: '0:18', p: 40, goal: 'Dosah',
-      hook: '3 věci, které se nemačkají ani po 10 hodinách ve vlaku',
-      facts: [['Délka', '12–20 s'], ['Publikum', 'Organický feed'], ['Úkol', 'Dosah a uložení']],
-      beats: [['0–3 s', 'Hook', 'Text přes obrazovku, nádraží v pozadí, rychlý střih.'], ['3–14 s', 'Listicle', 'Tři kousky, každý s testem „zmačkej a pusť“.'], ['14–18 s', 'Loop', 'Konec navazuje na začátek, video se přehrává dokola.']] },
-    { id: 'pm', format: 'Paid Meta Ad', product: 'Elektrolyty v prášku', tone: 'peach', shape: 'can', dur: '0:22', p: 24, goal: 'CPA',
-      hook: 'Ranní energie za 19 Kč denně. Bez kafe.',
-      facts: [['Délka', '15–25 s'], ['Publikum', 'Retargeting'], ['Úkol', 'Nižší CPA']],
-      beats: [['0–3 s', 'Hook', 'Cena za den jako první věta, sklenice v ruce.'], ['3–9 s', 'Problém', 'Odpolední útlum v práci, třetí káva.'], ['9–18 s', 'Řešení', 'Příprava za 10 sekund, chuť, složení bez cukru.'], ['18–22 s', 'CTA', 'Zkušební balení se slevou, tlačítko Nakoupit.']] }
-  ];
+  /* ── PORTFOLIO VIDEÍ ───────────────────────────────────────────────────────
+     Dokud je pole prázdné, sekce Portfolio ukáže jen box „Ukázky na vyžádání“
+     a tlačítko v hero vede na formulář pro vyžádání ukázek.
+     Po přidání prvního videa se filtr formátů a mřížka zobrazí automaticky.
+
+     format    'ps' Problem-Solution | 'ur' Unboxing / Review | 'oh' Organic Hook | 'pm' Paid Meta Ad
+     title     hook nebo název videa
+     src       cesta k MP4 na výšku (9:16), např. 'assets/videos/serum.mp4'
+     poster    náhledový obrázek (JPG/WebP), např. 'assets/videos/serum.jpg'
+     duration  '0:24'
+     brand, note, result  volitelné; result vyplňujte jen ověřeným číslem z kampaně
+
+     Příklad:
+     { id: 'serum', format: 'ps', title: 'Tohle jsem s pletí dělala 3 roky špatně', brand: 'Značka',
+       src: 'assets/videos/serum.mp4', poster: 'assets/videos/serum.jpg', duration: '0:24',
+       note: 'Video pro studené publikum na Meta.', result: '' }
+  ─────────────────────────────────────────────────────────────────────────── */
+  const VIDEOS = [];
+
+  const FORMAT_LABELS = { ps: 'Problem-Solution', ur: 'Unboxing / Review', oh: 'Organic Hook', pm: 'Paid Meta Ad' };
+
+  /* Ilustrační náhled formátu v telefonu v hero sekci (není to reálná kampaň). */
+  const HERO_SAMPLE = { format: 'Problem-Solution', product: 'Pleťové sérum', tone: 'sand', shape: 'bottle', p: 28, goal: 'CTR',
+    hook: 'Tohle jsem s pletí dělala 3 roky špatně' };
 
   const CMP = [
     ['Cena kreativy', '40 000–120 000 Kč za spot', 'od 4 900 Kč za video'],
@@ -808,8 +840,8 @@
     ['Jak probíhá platba?', '50 % zálohu platíte až po schválení skriptu, zbytek při dodání. Fakturuji na IČO se splatností 14 dní.']
   ];
 
-  /* ── Video karta (ukázka formátu) ── */
-  function cardInner(v) {
+  /* ── Hero mockup ── */
+  function mockupCard(v) {
     const t = TONES[v.tone];
     return `
       <div class="vframe" style="--tone:${t[0]};--deep:${t[1]};--prod:${t[2]};--p:${v.p}%">
@@ -818,30 +850,79 @@
         <div class="v-top" aria-hidden="true"><span class="v-cat">${v.format}</span><span class="v-metric"><i data-lucide="target"></i>${v.goal}</span></div>
         <p class="v-caption"><span>${v.hook}</span></p>
         <span class="v-play" aria-hidden="true"><i data-lucide="play"></i></span>
-        <div class="v-rail" aria-hidden="true">
-          <span><i data-lucide="heart"></i></span>
-          <span><i data-lucide="message-circle"></i></span>
-          <span><i data-lucide="bookmark"></i></span>
-          <span><i data-lucide="send"></i></span>
-        </div>
-        <div class="v-meta" aria-hidden="true">
-          <b>Eliška H.</b>
-          <p>Ukázkový skript · ${v.product}</p>
-          <span class="music"><i data-lucide="music-2"></i>původní zvuk</span>
-        </div>
+        <div class="v-rail" aria-hidden="true"><span><i data-lucide="heart"></i></span><span><i data-lucide="message-circle"></i></span><span><i data-lucide="bookmark"></i></span><span><i data-lucide="send"></i></span></div>
+        <div class="v-meta" aria-hidden="true"><b>Eliška H.</b><p>Ukázkový skript · ${v.product}</p><span class="music"><i data-lucide="music-2"></i>původní zvuk</span></div>
         <div class="v-progress" aria-hidden="true"><i></i></div>
       </div>`;
   }
+  $('heroCard').innerHTML = mockupCard(HERO_SAMPLE);
+
+  /* ── Portfolio ── */
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const videos = VIDEOS.filter(v => v && v.src && FORMAT_LABELS[v.format]);
+  const hasVideos = videos.length > 0;
+  const gridEl = $('videoGrid'), tabsEl = $('filterTabs');
+
   function videoCard(v) {
-    return `<button type="button" class="vcard" data-id="${v.id}" aria-label="${v.format}: ukázkový skript „${v.hook}“. Otevřít rozpis po sekundách" style="--dur:${parseInt(v.dur.split(':')[1], 10)}s">
-      ${cardInner(v)}
-      <span class="v-under"><b>${v.format}</b><span>${v.dur}</span></span>
+    const media = v.poster
+      ? `<img src="${esc(v.poster)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover">`
+      : `<video src="${esc(v.src)}#t=0.1" muted playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true"></video>`;
+    return `<button type="button" class="vcard" data-id="${esc(v.id)}" aria-label="Přehrát video: ${esc(v.title)} (${FORMAT_LABELS[v.format]})">
+      <div class="vframe is-real" style="--tone:#E7DACB">
+        ${media}
+        <div class="v-scrim" aria-hidden="true"></div>
+        <div class="v-top" aria-hidden="true"><span class="v-cat">${FORMAT_LABELS[v.format]}</span>${v.result ? `<span class="v-metric">${esc(v.result)}</span>` : ''}</div>
+        <span class="v-play" aria-hidden="true"><i data-lucide="play"></i></span>
+        <div class="v-meta" aria-hidden="true"><b>${esc(v.title)}</b>${v.brand ? `<p>${esc(v.brand)}</p>` : ''}</div>
+      </div>
+      <span class="v-under"><b>${esc(v.brand || FORMAT_LABELS[v.format])}</b><span>${esc(v.duration || '')}</span></span>
     </button>`;
   }
 
-  $('heroCard').innerHTML = cardInner(FORMATS[0]);
-  const gridEl = $('videoGrid');
-  gridEl.innerHTML = FORMATS.map(videoCard).join('');
+  let activeCat = 'all';
+  function renderTabs() {
+    const used = Object.keys(FORMAT_LABELS).filter(id => videos.some(v => v.format === id));
+    const cats = [['all', 'Vše', videos.length], ...used.map(id => [id, FORMAT_LABELS[id], videos.filter(v => v.format === id).length])];
+    tabsEl.innerHTML = cats.map(([id, lbl, n]) => `<button type="button" role="tab" class="tab" data-cat="${id}" aria-selected="${id === activeCat}" tabindex="${id === activeCat ? 0 : -1}">${lbl}<span class="count">${n}</span></button>`).join('');
+  }
+  function renderGrid() {
+    const list = activeCat === 'all' ? videos : videos.filter(v => v.format === activeCat);
+    gridEl.innerHTML = list.map(videoCard).join('');
+    icons();
+  }
+
+  /* Prázdný stav vs. portfolio */
+  $('portfolioHead').hidden = !hasVideos;
+  $('filterWrap').hidden = !hasVideos;
+  gridEl.hidden = !hasVideos;
+  $('ukazky').classList.toggle('mt-14', hasVideos);
+  $('ukazky').classList.toggle('md:mt-16', hasVideos);
+  $('samplesEyebrow').textContent = hasVideos ? 'Další ukázky na vyžádání' : 'Ukázky';
+
+  /* Hero tlačítko: s videi na portfolio, bez videí rovnou na vyžádání ukázek */
+  const heroBtn = $('heroVideosBtn');
+  if (hasVideos) {
+    heroBtn.href = '#videa';
+    heroBtn.innerHTML = '<i data-lucide="play-circle"></i> Prohlédnout videa';
+  } else {
+    heroBtn.href = '#ukazky';
+    heroBtn.innerHTML = '<i data-lucide="mail"></i> Vyžádat ukázky videí';
+  }
+
+  if (hasVideos) {
+    renderTabs(); renderGrid();
+    tabsEl.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-cat]'); if (!b) return;
+      activeCat = b.dataset.cat; renderTabs(); renderGrid();
+      tabsEl.querySelector(`[data-cat="${activeCat}"]`).focus();
+    });
+    tabsEl.addEventListener('keydown', (e) => {
+      if (!['ArrowRight', 'ArrowLeft'].includes(e.key)) return;
+      const ids = [...tabsEl.querySelectorAll('[data-cat]')].map(b => b.dataset.cat);
+      const i = ids.indexOf(activeCat);
+      tabsEl.querySelector(`[data-cat="${ids[(i + (e.key === 'ArrowRight' ? 1 : -1) + ids.length) % ids.length]}"]`).click();
+    });
+  }
 
   /* ── Srovnání ── */
   $('cmpRows').innerHTML = CMP.map(([label, a, b], i) => `
@@ -851,25 +932,27 @@
       <div class="px-5 pb-4 pt-1 md:p-6 flex gap-2.5 font-semibold bg-accent-soft/60"><i data-lucide="check" class="w-4 h-4 flex-none mt-[3px] text-accent-ink"></i><span>${b}</span></div>
     </div>`).join('');
 
-  /* ── Detail formátu ── */
-  const modal = $('vmodal');
+  /* ── Přehrávač videa ── */
+  const modal = $('vmodal'), mVideo = $('mVideo');
   gridEl.addEventListener('click', (e) => {
     const c = e.target.closest('.vcard'); if (!c) return;
-    const v = FORMATS.find(x => x.id === c.dataset.id);
-    $('mCard').innerHTML = cardInner(v);
-    $('mCat').textContent = `${v.format} · ${v.dur}`;
-    $('mTitle').textContent = `„${v.hook}“`;
-    $('mBrand').textContent = `Ukázkový skript · ${v.product}`;
-    $('mStats').innerHTML = v.facts.map(([k, val]) => `<div class="p-3 md:p-4 min-w-0"><dt class="text-[11px] md:text-[12px] text-muted">${k}</dt><dd class="mt-1 text-[14px] md:text-[15px] font-extrabold leading-snug">${val}</dd></div>`).join('');
-    $('mBeats').innerHTML = v.beats.map(([t, k, d], i) => `
-      <li class="grid grid-cols-[64px_1fr] gap-3 py-3 ${i ? 'border-t border-line' : ''}">
-        <span class="font-mono text-[12px] font-semibold text-accent-ink pt-0.5">${t}</span>
-        <span class="min-w-0"><b class="block text-[14px]">${k}</b><span class="text-[14px] text-muted">${d}</span></span>
-      </li>`).join('');
-    icons();
+    const v = videos.find(x => String(x.id) === c.dataset.id); if (!v) return;
+    mVideo.src = v.src;
+    if (v.poster) mVideo.poster = v.poster; else mVideo.removeAttribute('poster');
+    $('mCat').textContent = [FORMAT_LABELS[v.format], v.duration].filter(Boolean).join(' · ');
+    $('mTitle').textContent = v.title;
+    $('mBrand').textContent = v.brand || '';
+    $('mResult').textContent = v.result || '';
+    $('mResult').hidden = !v.result;
+    $('mNote').textContent = v.note || '';
     if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
+    mVideo.play().catch(() => {});
   });
-  const closeModal = () => { if (modal.open) { modal.close ? modal.close() : modal.removeAttribute('open'); } };
+  const closeModal = () => {
+    mVideo.pause();
+    if (modal.open) { modal.close ? modal.close() : modal.removeAttribute('open'); }
+  };
+  modal.addEventListener('close', () => mVideo.pause());
   $('mClose').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
@@ -964,7 +1047,6 @@
   });
 
   /* ── Odesílání formulářů ── */
-  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
   async function sendLead(payload) {
     if (!CONFIG.formEndpoint) return 'offline';
     try {
@@ -976,11 +1058,12 @@
   function showDone(prefix, status, o) {
     const sent = status === 'sent';
     $(prefix + 'Title').textContent = sent ? o.okTitle : (status === 'error' ? 'Odeslání se nepovedlo' : 'Zpráva je připravená');
-    $(prefix + 'Text').textContent = sent ? o.okText : `Zkopírujte ji a pošlete na ${EMAIL}, nebo ji otevřete rovnou ve svém e-mailu. Odpovím do 24 hodin v pracovní dny.`;
+    $(prefix + 'Text').textContent = sent ? o.okText : (HAS_EMAIL ? `Zkopírujte ji a pošlete na ${EMAIL}, nebo ji otevřete rovnou ve svém e-mailu. Odpovím do 24 hodin v pracovní dny.` : 'Zkopírujte ji prosím a pošlete mi ji. Odpovím do 24 hodin v pracovní dny.');
     $(prefix + 'Summary').textContent = o.summary;
     $(prefix + 'Summary').hidden = sent;
     $(prefix + 'Actions').hidden = sent;
     $(prefix + 'Mail').href = mailto(o.subject, o.summary);
+    $(prefix + 'Mail').hidden = !HAS_EMAIL;
   }
   async function withBusy(form, fn) {
     const btn = form.querySelector('[type="submit"]');
@@ -1038,7 +1121,7 @@
     const fallback = () => { const r = document.createRange(); r.selectNodeContents(sourceEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); label.textContent = 'Označeno, stiskněte Ctrl+C'; setTimeout(() => { label.textContent = orig; }, 2600); };
     try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
   }
-  $('copyEmail').addEventListener('click', (e) => copy(EMAIL, e.currentTarget, $('emailText')));
+  if (HAS_EMAIL) $('copyEmail').addEventListener('click', (e) => copy(EMAIL, e.currentTarget, $('emailText')));
   $('copySummary').addEventListener('click', (e) => copy(summary, e.currentTarget, $('doneSummary')));
   $('copySample').addEventListener('click', (e) => copy(sampleSummary, e.currentTarget, $('sampleSummary')));
 
