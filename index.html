@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Eliška Hrachovcová UGC</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23C4512E%22/%3E%3Cg%20fill%3D%22%23FAF7F3%22%3E%3Crect%20x%3D%2213%22%20y%3D%2217%22%20width%3D%226%22%20height%3D%2230%22/%3E%3Crect%20x%3D%2213%22%20y%3D%2217%22%20width%3D%2216%22%20height%3D%226%22/%3E%3Crect%20x%3D%2213%22%20y%3D%2229%22%20width%3D%2213%22%20height%3D%226%22/%3E%3Crect%20x%3D%2213%22%20y%3D%2241%22%20width%3D%2216%22%20height%3D%226%22/%3E%3Crect%20x%3D%2235%22%20y%3D%2217%22%20width%3D%226%22%20height%3D%2230%22/%3E%3Crect%20x%3D%2245%22%20y%3D%2217%22%20width%3D%226%22%20height%3D%2230%22/%3E%3Crect%20x%3D%2235%22%20y%3D%2229%22%20width%3D%2216%22%20height%3D%226%22/%3E%3C/g%3E%3C/svg%3E">
 <meta name="description" content="Výkonnostní UGC videa pro TikTok a Meta Ads. Skript, natáčení, 3 hooky ke každému videu a dodání do 5 dnů.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +16,12 @@
     theme: {
       extend: {
         colors: {
-          ink: '#111111',
-          paper: '#F9F9FB',
+          ink: '#1A1715',
+          paper: '#FAF7F3',
           surface: '#FFFFFF',
-          line: '#E5E7EB',
-          muted: '#5E5F67',
-          accent: { DEFAULT: '#FF6A3D', soft: '#FFEDE5', ink: '#B4370E' }
+          line: '#EAE3DB',
+          muted: '#6A625B',
+          accent: { DEFAULT: '#C4512E', soft: '#F7E6DC', ink: '#A8411F', light: '#E98A62' }
         },
         fontFamily: {
           sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
@@ -32,17 +33,20 @@
 </script>
 <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
 <style>
-  /* Layout: světlý editoriální one-pager, obsah v 1200px wrapperu, sekce oddělené hairline linkami,
+  /* Layout: světlý editoriální one-pager v barvách Eliščiny fotky (cihla, malta, camel kabát, denim), obsah v 1200px wrapperu, sekce oddělené hairline linkami,
      jediný akcent = „REC“ oranžová (nahrávací tečka kamery), čísla v mono jako v Ads Manageru. */
   :root {
-    --paper: #F9F9FB;
+    --paper: #FAF7F3;     /* malta / světlá omítka */
     --surface: #FFFFFF;
-    --ink: #111111;
-    --muted: #5E5F67;
-    --line: #E5E7EB;
-    --accent: #FF6A3D;
-    --accent-soft: #FFEDE5;
-    --accent-ink: #B4370E;
+    --ink: #1A1715;       /* tmavý denim, teplá černá */
+    --muted: #6A625B;
+    --line: #EAE3DB;
+    --accent: #C4512E;    /* cihla z fotky */
+    --accent-soft: #F7E6DC;
+    --accent-ink: #A8411F;
+    --accent-light: #E98A62;
+    --marker: #F2A27C;    /* sytý zvýrazňovač */
+    --camel: #BFA184;     /* kabát */
     --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     color-scheme: light;
@@ -80,29 +84,26 @@
     font-family: var(--font-sans); font-size: 13.5px; font-weight: 700;
     letter-spacing: -0.005em; line-height: 1.3; color: var(--accent-ink);
   }
-  .eyebrow::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: var(--accent); flex: none; }
   .label-sm { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
   .num { font-variant-numeric: tabular-nums; }
   .marker {
-    background: linear-gradient(transparent 60%, var(--accent-soft) 60%, var(--accent-soft) 94%, transparent 94%);
+    background: linear-gradient(transparent 54%, var(--marker) 54%, var(--marker) 92%, transparent 92%);
     box-decoration-break: clone; -webkit-box-decoration-break: clone;
   }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
   /* REC tečka */
   .rec { width: 8px; height: 8px; border-radius: 99px; background: var(--accent); display: inline-block; position: relative; flex: none; }
-  .rec::after { content: ""; position: absolute; inset: -4px; border-radius: inherit; border: 1.5px solid var(--accent); opacity: .5; animation: rec 1.8s ease-out infinite; }
-  @keyframes rec { 0% { transform: scale(.5); opacity: .7 } 100% { transform: scale(1.4); opacity: 0 } }
 
   /* Tlačítka */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: 15px; letter-spacing: -0.01em; transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease; white-space: nowrap; }
   .btn svg { width: 18px; height: 18px; }
-  .btn-primary { background: var(--accent); color: var(--ink); box-shadow: 0 1px 0 rgba(17,17,17,.08), inset 0 -2px 0 rgba(17,17,17,.12); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(255,106,61,.8), inset 0 -2px 0 rgba(17,17,17,.12); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-ink); }
   .btn-ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
   .btn-ghost:hover { border-color: var(--ink); }
   .btn-ink { background: var(--ink); color: var(--paper); }
-  .btn-ink:hover { transform: translateY(-1px); background: #2a2a2a; }
+  .btn-ink:hover { background: #3a3430; }
 
   /* ───── Vertikální video karta 9:16 ───── */
   .vcard { display: flex; flex-direction: column; gap: 10px; text-align: left; min-width: 0; width: 100%; }
@@ -171,7 +172,7 @@
 
   /* Filtr záložky */
   .tab { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; transition: all .2s ease; }
-  .tab:hover { color: var(--ink); border-color: #cfd2d8; }
+  .tab:hover { color: var(--ink); border-color: var(--camel); }
   .tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
   .tab .count { font-family: var(--font-mono); font-size: 11px; opacity: .7; }
   .no-scrollbar { scrollbar-width: none; }
@@ -193,14 +194,14 @@
   /* Formulář */
   .field { width: 100%; min-height: 50px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); padding: 12px 14px; font-size: 16px; color: var(--ink); transition: border-color .2s, box-shadow .2s; }
   .field::placeholder { color: #9A9BA3; }
-  .field:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(255,106,61,.18); }
+  .field:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(196,81,46,.16); }
   .label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
   .chip-opt { display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; }
   input:checked + .chip-opt { background: var(--ink); color: var(--paper); border-color: var(--ink); }
   input:focus-visible + .chip-opt { outline: 2px solid var(--accent); outline-offset: 2px; }
   .slot { height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-family: var(--font-mono); font-size: 14px; font-weight: 600; transition: all .2s; }
   .slot:hover:not(:disabled) { border-color: var(--ink); }
-  .slot:disabled { color: #B9BAC0; background: var(--paper); text-decoration: line-through; cursor: not-allowed; }
+  .slot:disabled { color: #B8AFA6; background: var(--paper); text-decoration: line-through; cursor: not-allowed; }
   .slot[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
   .day { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 64px; padding: 10px 8px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); transition: all .2s; }
   .day[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -221,8 +222,8 @@
 <header class="site-header sticky z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md">
   <div class="wrap flex h-[68px] items-center justify-between gap-4">
     <a href="#top" class="flex items-center gap-2.5 font-extrabold tracking-tight text-[17px]" aria-label="Eliška Hrachovcová, na začátek stránky">
-      <span class="rec" aria-hidden="true"></span>
-      <span>eliška hrachovcová</span>
+      <svg viewBox="0 0 64 64" class="w-7 h-7 flex-none" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#C4512E"/><g fill="#FAF7F3"><rect x="13" y="17" width="6" height="30"/><rect x="13" y="17" width="16" height="6"/><rect x="13" y="29" width="13" height="6"/><rect x="13" y="41" width="16" height="6"/><rect x="35" y="17" width="6" height="30"/><rect x="45" y="17" width="6" height="30"/><rect x="35" y="29" width="16" height="6"/></g></svg>
+      <span>Eliška Hrachovcová</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[14px] font-semibold text-muted" aria-label="Hlavní navigace">
       <a href="#videa" class="hover:text-ink transition-colors">Videa</a>
@@ -270,8 +271,7 @@
           <i data-lucide="play-circle"></i> Prohlédnout videa
         </a>
       </div>
-      <p class="mt-4 text-[13px] text-muted flex items-start gap-2">
-        <i data-lucide="sparkles" class="w-4 h-4 mt-0.5 flex-none text-accent-ink"></i>
+      <p class="mt-4 max-w-[58ch] text-[13px] text-muted">
         <span>Srovnání zdarma: projdu 3 vaše aktuální reklamy a do 48 hodin pošlu 3 nové hooky, které bych natočila.</span>
       </p>
 
@@ -296,7 +296,7 @@
       <figure class="relative ml-auto w-[86%] max-w-full aspect-[4/5] overflow-hidden rounded-[32px] bg-line shadow-[0_40px_80px_-40px_rgba(17,17,17,.45)]">
         <img src="assets/eliska-hrachovcova.webp" alt="Eliška Hrachovcová, UGC creatorka" width="800" height="800" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-[50%_30%]">
         <figcaption class="absolute top-3.5 right-3.5 inline-flex items-center gap-2 rounded-full bg-surface/90 backdrop-blur px-3.5 py-2 text-[12.5px] font-bold shadow-sm">
-          <span class="rec" aria-hidden="true"></span>Eliška · UGC creatorka
+          Eliška · UGC creatorka
         </figcaption>
       </figure>
 
@@ -306,8 +306,7 @@
 
       <div class="absolute right-0 bottom-0 w-[172px] sm:w-[196px] rounded-2xl border border-line bg-surface p-3.5 shadow-[0_20px_40px_-24px_rgba(17,17,17,.35)]">
         <div class="flex items-center gap-2">
-          <span class="grid place-items-center w-6 h-6 rounded-full bg-accent-soft"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-accent-ink"></i></span>
-          <span class="label-sm">Meta Ads · 14 dní</span>
+                    <span class="label-sm">Meta Ads · 14 dní</span>
         </div>
         <div class="mt-2.5 grid grid-cols-2 gap-2">
           <div>
@@ -346,14 +345,14 @@
           <p class="mt-1 text-[12px] text-muted">agentura, štáb, studio</p>
         </div>
         <div class="p-5 md:p-6 border-b border-line bg-accent-soft/60">
-          <p class="flex items-center gap-2 font-extrabold"><span class="rec" aria-hidden="true"></span> Výkonnostní UGC</p>
+          <p class="font-extrabold">Výkonnostní UGC</p>
           <p class="mt-1 text-[12px] text-muted">od Elišky, natočeno na výšku</p>
         </div>
       </div>
       <div id="cmpRows"></div>
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-5 border-t border-line bg-ink text-paper p-6 md:p-8">
         <p class="max-w-[60ch] text-[16px] md:text-[18px] leading-snug">
-          Za cenu jednoho studiového spotu <span class="num text-white/60">(60&nbsp;000&nbsp;Kč)</span> dostanete <b class="text-accent">15 videí a 45 hooků</b> k testování.
+          Za cenu jednoho studiového spotu <span class="num text-white/60">(60&nbsp;000&nbsp;Kč)</span> dostanete <b class="text-accent-light">15 videí a 45 hooků</b> k testování.
         </p>
         <a href="#cenik" class="btn btn-primary flex-none">Porovnat balíčky <i data-lucide="arrow-down-right"></i></a>
       </div>
@@ -379,7 +378,6 @@
 
     <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-[22px] border border-line bg-surface p-5 md:p-6">
       <div class="flex items-start gap-4">
-        <span class="grid place-items-center w-11 h-11 rounded-full bg-accent-soft flex-none"><i data-lucide="folder-lock" class="w-5 h-5 text-accent-ink"></i></span>
         <div>
           <p class="font-bold">Další videa sdílím na vyžádání</p>
           <p class="text-[14px] text-muted">Část kampaní je pod NDA. Pošlu vám ukázky z vaší kategorie.</p>
@@ -531,7 +529,6 @@
 
         <div id="formDone" class="hidden">
           <div class="flex items-center gap-3">
-            <span class="grid place-items-center w-11 h-11 rounded-full bg-accent-soft"><i data-lucide="mail-check" class="w-5 h-5 text-accent-ink"></i></span>
             <h3 id="doneTitle" class="text-[22px] font-extrabold">Poptávka je připravená</h3>
           </div>
           <p id="doneText" class="mt-3 text-[15px] text-muted"></p>
@@ -581,7 +578,7 @@
 <footer class="border-t border-line bg-surface">
   <div class="wrap py-12 grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
     <div>
-      <p class="flex items-center gap-2.5 font-extrabold tracking-tight text-[17px]"><span class="rec" aria-hidden="true"></span>eliška hrachovcová</p>
+      <p class="flex items-center gap-2.5 font-extrabold tracking-tight text-[17px]"><svg viewBox="0 0 64 64" class="w-7 h-7 flex-none" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#C4512E"/><g fill="#FAF7F3"><rect x="13" y="17" width="6" height="30"/><rect x="13" y="17" width="16" height="6"/><rect x="13" y="29" width="13" height="6"/><rect x="13" y="41" width="16" height="6"/><rect x="35" y="17" width="6" height="30"/><rect x="45" y="17" width="6" height="30"/><rect x="35" y="29" width="16" height="6"/></g></svg>Eliška Hrachovcová</p>
       <p class="mt-3 max-w-[38ch] text-[14px] text-muted">Výkonnostní UGC videa pro TikTok, Instagram Reels a Meta Ads. Natáčím česky a slovensky.</p>
     </div>
     <div class="text-[14px]">
@@ -648,13 +645,13 @@
   const icons = () => window.lucide && window.lucide.createIcons();
 
   /* ── Data ── */
-  const TONES = {
-    sand:  ['#E9DFD3', '#CDB9A4', '#FBF7F1'],
-    blush: ['#EEDCD8', '#D2ADA6', '#FFF8F5'],
-    sage:  ['#DEE3D7', '#B3BFA8', '#F6F8F2'],
-    stone: ['#E2E1DD', '#B9B6AF', '#FCFBF9'],
-    peach: ['#F6DCCB', '#E1AE8F', '#FFF6EF'],
-    mist:  ['#DCE1E5', '#AEB8C1', '#F8FAFB']
+  const TONES = { /* odvozeno z fotky: camel kabát, cihla, břečťan, denim, malta */
+    sand:  ['#E7DACB', '#BFA184', '#FBF7F2'],
+    blush: ['#EDD8D0', '#C59C8E', '#FFF8F5'],
+    sage:  ['#DDE0CD', '#98A274', '#F6F7F0'],
+    stone: ['#ECE6DF', '#BFB3A6', '#FDFBF8'],
+    peach: ['#EDCBB9', '#C98A6E', '#FBF3EE'],
+    mist:  ['#DADBE0', '#8D919D', '#F7F7F9']
   };
   const CATS = [
     { id: 'all', label: 'Vše' },
@@ -838,11 +835,10 @@
   document.getElementById('steps').innerHTML = STEPS.map(s => `
     <li class="relative flex flex-col rounded-[22px] border border-line bg-paper p-6 min-w-0">
       <div class="flex items-center justify-between">
-        <span class="grid place-items-center w-11 h-11 rounded-full bg-surface border border-line"><i data-lucide="${s.icon}" class="w-5 h-5"></i></span>
+        <span class="text-[13px] font-bold text-muted">Krok ${+s.n}</span>
         <span class="text-[13px] font-bold ${s.n === '04' ? 'text-accent-ink' : 'text-muted'}">${s.day}</span>
       </div>
-      <p class="mt-6 text-[13px] font-bold text-muted">Krok ${s.n}</p>
-      <h3 class="mt-1 text-[20px] font-extrabold">${s.title}</h3>
+      <h3 class="mt-4 text-[20px] font-extrabold">${s.title}</h3>
       <p class="mt-2 text-[15px] text-muted leading-relaxed flex-1">${s.text}</p>
       <p class="mt-5 pt-4 border-t border-line text-[13px] font-semibold flex items-center gap-2"><i data-lucide="corner-down-right" class="w-4 h-4 text-accent-ink"></i>${s.out}</p>
     </li>`).join('');
@@ -854,13 +850,13 @@
     <article class="relative flex flex-col rounded-[28px] p-6 md:p-8 min-w-0 ${dark ? 'bg-ink text-paper shadow-[0_40px_80px_-40px_rgba(17,17,17,.6)]' : 'bg-surface border border-line'}">
       <div class="flex items-center justify-between gap-3">
         <h3 class="text-[20px] font-extrabold">${p.name}</h3>
-        ${dark ? '<span class="text-[12px] font-bold rounded-full bg-accent text-ink px-3 py-1">Nejčastější volba</span>' : ''}
+        ${dark ? '<span class="text-[12px] font-bold rounded-full bg-accent text-white px-3 py-1">Nejčastější volba</span>' : ''}
       </div>
-      <p class="mt-2 text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.for}</p>
+      <p class="mt-2 lg:min-h-[42px] text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.for}</p>
       <p class="mt-6 flex items-baseline gap-2 flex-wrap"><span class="num text-[44px] font-extrabold tracking-[-0.04em] leading-none">${p.price}</span><span class="text-[14px] ${dark ? 'text-white/65' : 'text-muted'}">${p.unit}</span></p>
-      <p class="mt-2 h-5 text-[13px] font-bold ${dark ? 'text-accent' : 'text-accent-ink'}">${p.note || ''}</p>
+      <p class="mt-2 h-5 text-[13px] font-bold ${dark ? 'text-accent-light' : 'text-accent-ink'}">${p.note || ''}</p>
       <ul class="mt-5 grid gap-2.5 text-[15px] flex-1">
-        ${p.items.map(i => `<li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[3px] ${dark ? 'text-accent' : 'text-accent-ink'}"></i><span>${i}</span></li>`).join('')}
+        ${p.items.map(i => `<li class="flex gap-2.5"><i data-lucide="check" class="w-[18px] h-[18px] flex-none mt-[3px] ${dark ? 'text-accent-light' : 'text-accent-ink'}"></i><span>${i}</span></li>`).join('')}
       </ul>
       <div class="mt-7 rounded-2xl p-4 ${dark ? 'bg-white/[.07] border border-white/10' : 'bg-paper border border-line'}">
         <p class="flex items-center gap-2 text-[13px] font-bold ${dark ? 'text-white/70' : 'text-muted'}"><i data-lucide="shield-check" class="w-4 h-4"></i>Práva k užití</p>
